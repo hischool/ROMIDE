@@ -1,10 +1,10 @@
 package com.romide.main.ide;
 
 import android.os.*;
-import android.widget.*;
+import android.view.*;
+import android.webkit.*;
 import com.romide.main.*;
 import com.romide.main.ide.utils.*;
-import android.view.*;
 
 
 public class IDEAbout extends BaseActivity
@@ -17,6 +17,9 @@ public class IDEAbout extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ide_about);
 		
+		WebView web = (WebView)findViewById(R.id.ide_aboutWebView);
+		web.getSettings().setJavaScriptEnabled(true);
+		web.loadUrl("http://zt515.github.io/ROMIDE");
 		
 		Actionbar();
 	}
