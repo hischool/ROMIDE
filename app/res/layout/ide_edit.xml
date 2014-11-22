@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="match_parent"
+	android:layout_width="match_parent">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="无打开文件"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:id="@+id/edit_file_name"
+		android:background="#282727"
+		android:textColor="#FFFFFF"
+		android:ellipsize="end"
+		android:maxLines="1"/>
+
+	<com.romide.main.ide.view.SyntaxHighlightEditText
+		android:textCursorDrawable="@null"
+		android:layout_below="@id/edit_file_name"
+		android:layout_height="match_parent"
+		android:inputType="textMultiLine"
+		android:ems="10"
+		android:textSize="14sp"
+		android:id="@+id/edit_edit"
+		android:layout_width="match_parent"
+		android:gravity="start"
+		android:singleLine="false"
+		android:scrollHorizontally="false"
+		android:background="#282727"
+		android:textColor="#D2CFCE"
+		android:padding="10dp"
+		android:scrollbars="vertical"
+		android:clickable="true"/>
+
+</RelativeLayout>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<PreferenceCategory
+		android:title="Apktool 工具">
+		
+		<Preference
+			android:padding="10dp"
+			android:title="反编译 Apk"
+			android:key="apktool_d_apk"/>
+
+		<Preference
+			android:padding="10dp"
+			android:title="回编译 Apk"
+			android:key="apktool_b_apk"/>
+
+		
+		<Preference
+			android:padding="10dp"
+			android:title="反编译 Dex"
+			android:key="apktool_d_dex"/>
+
+		<Preference
+			android:padding="10dp"
+			android:title="回编译 Dex"
+			android:key="apktool_b_dex"/>
+		
+		
+		
+		<Preference
+			android:padding="10dp"
+			android:title="加密 Apk/Zip"
+			android:key="lock_rom"/>
+
+		<Preference
+			android:padding="10dp"
+			android:title="解密 Apk/Zip"
+			android:key="unlock_rom"/>
+		
+		
+	</PreferenceCategory>
+	
+</PreferenceScreen>

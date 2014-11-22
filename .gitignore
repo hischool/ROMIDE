@@ -1,0 +1,6 @@
+*.class
+*.dex
+*.apk
+app/bin/
+temp/
+test/

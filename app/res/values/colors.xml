@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="light_background">#ffA5A5A5</color>
+	<color name="light_text">#ff000000</color>
+	
+	<color name="dark_background">#ff000000</color>
+	<color name="dark_text">#ffffffff</color>
+	
+	
+		<color name="ash">#37000000</color>
+	<color name="silver">#37FFFFFF</color>
+
+	<color name="umeng_fb_color_btn_normal">#333333</color>
+    <color name="umeng_fb_color_btn_pressed">#1495F7</color>
+	
+</resources>

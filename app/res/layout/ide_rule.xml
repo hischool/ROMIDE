@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="top|center"
+	android:padding="10dp"
+	android:background="@drawable/main_bg">
+
+	<ImageView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:src="@drawable/ide_logo_white"
+		android:id="@+id/img"/>
+
+	<ScrollView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/sco"
+		android:layout_below="@id/img">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:id="@+id/rule_tv"
+			android:textColor="#FFFFFF"/>
+
+	</ScrollView>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:layout_below="@id/sco"
+		android:orientation="vertical"
+		android:layout_alignParentBottom="true"
+		android:gravity="bottom">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:gravity="left|center">
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_below="@id/sco"
+				android:id="@+id/rule_agree"
+				android:text="我同意以上条约"
+				android:textColor="#C43026"/>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="继续"
+				android:layout_width="match_parent"
+				android:id="@+id/rule_next"
+				style="@style/Widget.Button.Green"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

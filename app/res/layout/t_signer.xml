@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="top|center"
+	android:padding="10dp"
+	android:background="@drawable/main_bg">
+
+	<ImageView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:src="@drawable/ide_logo_white"
+		android:id="@+id/img"/>
+
+	<RelativeLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/sco"
+		android:layout_below="@id/img">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:id="@+id/base_layout">
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:gravity="center"
+				android:layout_marginBottom="5dp">
+
+				<EditText
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:layout_width="wrap_content"
+					android:hint="@string/input_file_path"
+					android:textColor="#000000"
+					android:maxLines="1"
+					android:id="@+id/signer_in"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="@string/browser_find"
+					android:layout_width="wrap_content"
+					android:id="@+id/signer_find_in"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:gravity="center"
+				android:layout_marginBottom="5dp">
+
+				<EditText
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:layout_width="wrap_content"
+					android:hint="@string/output_file_path"
+					android:textColor="#000000"
+					android:maxLines="1"
+					android:id="@+id/signer_out"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="@string/browser_find"
+					android:layout_width="wrap_content"
+					android:id="@+id/signer_find_out"
+					/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:layout_below="@id/sco"
+		android:orientation="vertical"
+		android:layout_alignParentBottom="true"
+		android:gravity="bottom">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:gravity="left|center">
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/sign_start"
+				android:layout_width="match_parent"
+				android:id="@+id/signer_start"
+				/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+		android:title="功能">
+
+		<CheckBoxPreference 
+			android:key="allow_fc"
+			android:title="防卡死模式"
+			android:defaultValue="@bool/default_allow_fc"
+			android:summary="使用保险方法防止应用卡死"/>
+
+	</PreferenceCategory>
+	
+	
+	
+	<PreferenceCategory
+		android:title="应用">
+		
+		<CheckBoxPreference 
+			android:key="use_splash"
+			android:title="允许启动动画"
+			android:defaultValue="@bool/default_use_splash"
+			android:summary="是否在启动时显示动画"/>
+		
+		<CheckBoxPreference 
+			android:key="auto_check_update"
+			android:title="自动检测更新"
+			android:defaultValue="@bool/default_auto_check_update"
+			android:summary="是否在启动时检测更新"/>
+		
+		
+		<Preference 
+			android:key="goto_hello"
+			android:title="查看 ROM-IDE 简介"
+			android:summary="简略了解 ROM-IDE"/>
+		
+	</PreferenceCategory>
+	
+	
+	<PreferenceCategory
+		android:title="支持">
+		
+		<Preference 
+			android:key="goto_rom_fac"
+			android:title="打开 ROM-Factory"
+			android:summary="ROM-IDE 的合作伙伴"/>
+		
+		<Preference 
+			android:key="goto_romide_com"
+			android:title="官方网站"
+			android:summary="www.romide.com"/>
+		
+		<Preference 
+			android:key="goto_romerzj_com"
+			android:title="官方论坛"
+			android:summary="bbs.romerzj.com"/>
+		
+	</PreferenceCategory>
+
+</PreferenceScreen>

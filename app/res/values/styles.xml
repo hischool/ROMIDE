@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="Theme" parent="@android:style/Theme.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Theme.Holo" parent="@android:style/Theme.Holo">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Theme.Holo.ActionBarOverlay" parent="@style/Theme.Holo">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:actionBarStyle">@style/Widget.ActionBarOverlay</item>
+    </style>
+    <style name="Widget.ActionBarOverlay" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">#a0000000</item>
+    </style>
+	
+	<style name="Widget.Button.Green" parent="@android:style/Widget.Button">
+		<item name="android:textColor">#ffffffff</item>
+		<item name="android:background">#32000000</item>
+		<item name="android:textSize">18dp</item>
+	</style>
+	
+	
+	
+	<style name="fileChooserName">
+        <item name="android:drawablePadding">@dimen/list_item_padding</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingLeft">@dimen/list_item_padding</item>
+        <item name="android:paddingRight">@dimen/list_item_padding</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+    </style>
+
+	
+	<style name="ChooserTheme" parent="android:Theme.Light" />
+	
+	    <style name="fc_base_theme" parent="@android:style/Theme.Black">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="fc_theme" parent="fc_base_theme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+	
+</resources>
+

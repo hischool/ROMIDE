@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="imageview" />
+	<item type="id" name="fab_expand_menu_button"/>
+    <item type="id" name="textview" />
+    <item type="id" name="mainview" />
+    <item type="id" name="scrollview" />
+</resources>

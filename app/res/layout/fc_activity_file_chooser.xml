@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
+
+	<TextView
+		android:id="@+id/fc_path"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:maxLines="1"
+		android:padding="8dp"
+		android:singleLine="true"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:ellipsize="end"/>
+
+	<View
+		android:id="@+id/fc_separator2"
+		android:layout_width="match_parent"
+		android:layout_height="1px"
+		android:layout_below="@id/fc_path"
+		android:background="@android:color/darker_gray"
+		tools:ignore="PxUsage"/>
+
+	<ViewSwitcher
+		android:id="@+id/fc_view_switcher"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@id/fc_separator2">
+
+		<ListView
+			android:id="@+id/fc_list"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+		</ListView>
+
+		<ProgressBar
+			android:id="@+id/fc_progress_bar"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"/>
+
+	</ViewSwitcher>
+
+</RelativeLayout>
+

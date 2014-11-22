@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:padding="10dp">
+
+	<ScrollView
+		android:layout_height="match_parent"
+		android:layout_width="match_parent">
+
+		<LinearLayout
+			android:layout_height="match_parent"
+			android:layout_width="match_parent"
+			android:orientation="vertical">
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/rom_name"
+				android:layout_width="wrap_content"/>
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:layout_width="match_parent"
+				android:id="@+id/wk_create_new_edit_name"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/rom_another"
+				android:layout_width="wrap_content"/>
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:layout_width="match_parent"
+				android:id="@+id/wk_create_new_edit_another"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/rom_version"
+				android:layout_width="wrap_content"/>
+
+			<EditText
+				android:layout_height="wrap_content"
+				android:ems="10"
+				android:layout_width="match_parent"
+				android:id="@+id/wk_create_new_edit_version"
+				android:layout_marginBottom="5dp"/>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/cpu"
+				android:layout_width="wrap_content"/>
+
+			<RadioGroup
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:gravity="left|center"
+				android:layout_marginBottom="5dp"
+				android:paddingLeft="10dp">
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:checked="true"
+					android:layout_width="wrap_content"
+					android:id="@+id/wk_create_new_cpu_mtk"
+					android:text="@string/cpu_mtk"/>
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/wk_create_new_cpu_gt"
+					android:text="@string/cpu_gt"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"/>
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/wk_create_new_cpu_sc"
+					android:text="@string/cpu_sc"/>
+
+			</RadioGroup>
+
+			<TextView
+				android:layout_height="wrap_content"
+				android:text="@string/other_options"
+				android:layout_width="wrap_content"/>
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="@string/format_data"
+				android:id="@+id/wk_create_new_format_data"/>
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:text="@string/format_system"
+				android:id="@+id/wk_create_new_format_system"
+				android:layout_marginBottom="5dp"/>
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:checked="true"
+				android:layout_width="wrap_content"
+				android:id="@+id/wk_create_new_dumpsystem"
+				android:text="@string/rom_dump_system"/>
+
+			<RadioGroup
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/wk_create_new_dumpsystem_layout"
+				android:gravity="left"
+				android:paddingLeft="10dp"
+				android:layout_marginBottom="5dp">
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:checked="true"
+					android:id="@+id/wk_create_new_system_tar"
+					android:text="@string/rom_tar"/>
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/wk_create_new_system_gz"
+					android:text="@string/rom_gz"/>
+
+				<RadioButton
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content"
+					android:id="@+id/wk_create_new_system_bz2"
+					android:text="@string/rom_bz2"/>
+
+			</RadioGroup>
+
+			<CheckBox
+				android:layout_height="wrap_content"
+				android:layout_width="wrap_content"
+				android:id="@+id/wk_create_new_useboot"
+				android:checked="false"
+				android:text="@string/rom_useboot"/>
+
+			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="horizontal"
+				android:id="@+id/wk_create_new_useboot_layout"
+				android:visibility="gone"
+				android:gravity="left"
+				android:layout_marginBottom="10dp">
+
+				<EditText
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/wk_create_new_useboot_edit_path"
+					android:layout_width="wrap_content"
+					android:maxLines="1"
+					android:ellipsize="end"/>
+
+				<Button
+					android:layout_height="wrap_content"
+					android:text="@string/browser_find"
+					android:id="@+id/wk_create_new_useboot_find"
+					android:layout_width="wrap_content"/>
+
+			</LinearLayout>
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="@string/rom_apply"
+				android:layout_width="match_parent"
+				android:id="@+id/wk_create_new_finish"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+

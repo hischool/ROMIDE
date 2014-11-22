@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="top|center"
+	android:id="@+id/wk_dialog_create_new_layout"
+	android:layout_margin="10dp">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/rom_create"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/rom_location"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:layout_width="match_parent"
+		android:layout_marginBottom="10dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/rom_name"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:layout_width="match_parent"
+		android:id="@+id/wk_dialog_create_new_name"
+		
+		android:layout_marginBottom="10dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/rom_version"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:layout_width="match_parent"
+		android:id="@+id/wk_dialog_create_new_version"
+	
+		android:layout_marginBottom="10dp"/>
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="@string/rom_another"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:ems="10"
+		android:layout_width="match_parent"
+		android:id="@+id/wk_dialog_create_new_another"
+
+		android:layout_marginBottom="10dp"/>
+
+</LinearLayout>
+

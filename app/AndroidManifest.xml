@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.romide.main"
+	android:versionName="0.10-preview"
+	android:versionCode="100"
+	android:installLocation="auto">
+
+    <uses-sdk 
+		android:minSdkVersion="11" 
+		android:targetSdkVersion="11" />
+
+    <uses-feature 
+		android:name="android.hardware.touchscreen" 
+		android:required="false" />
+
+	<uses-permission 
+		android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	<uses-permission 
+		android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission 
+		android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission 
+		android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission 
+		android:name="android.permission.ACCESS_SUPERUSER" />
+    <uses-permission 
+		android:name="android.permission.WAKE_LOCK" />
+	<uses-permission 
+		android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission 
+		android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission 
+		android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission 
+		android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission 
+		android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission 
+		android:name="android.permission.WAKE_LOCK" />
+    <uses-permission 
+		android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+
+
+
+
+
+    <application 
+		android:icon="@drawable/ic_ide"
+		android:label="@string/application_ide"
+		android:theme="@android:style/Theme.Holo.Light"
+		android:hardwareAccelerated="true">
+
+		<activity 
+			android:name=".ide.IDESplash"
+			android:label="@string/application_ide"
+			android:icon="@drawable/ic_ide">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEMain"
+			android:label="@string/application_ide"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDERule"
+			android:label="@string/ide_title_rule"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.T_BuildProp"
+			android:label="@string/ide_title_buildprop"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.T_PortBoot"
+			android:label="@string/ide_title_portboot"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.T_PortRom"
+			android:label="@string/ide_title_portrom"
+			android:icon="@drawable/ic_ide">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEMore"
+			android:label="@string/ide_title_more"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDETerminal"
+			android:label="@string/ide_title_terminal"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEGui"
+			android:label="@string/ide_title_gui"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.T_Signer"
+			android:label="@string/ide_title_signer"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEInstall"
+			android:label="@string/ide_title_install"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEPlugin"
+			android:label="@string/ide_title_plugin"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+
+		<activity 
+			android:name=".ide.IDEApktool"
+			android:label="@string/ide_title_apktool"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEAbout"
+			android:label="@string/ide_title_about"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEEdit"
+			android:label="@string/ide_title_editor"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEPreference"
+			android:label="@string/ide_title_preference"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity 
+			android:name=".ide.IDEHello"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity
+			android:name=".ide.IDEPortMethodManager"
+			android:label="@string/ide_title_portmethodmgr"
+			android:uiOptions="splitActionBarWhenNarrow"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+		<activity
+			android:name=".workspace.WKMain"
+			android:label="@string/ide_title_workspace"
+			android:icon="@drawable/ic_ide">
+		</activity>
+		
+		<activity
+			android:name=".workspace.WKCreateNew"
+			android:label="@string/ide_title_wkcreatenew"
+			android:icon="@drawable/ic_ide">
+		</activity>
+		
+
+		<activity 
+			android:name=".Virtual"
+			android:label="Virtual"
+			android:icon="@drawable/ic_ide">
+		</activity>
+
+
+		<activity
+            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/ic_chooser"
+            android:label="@string/choose_file"
+            android:theme="@android:style/Theme.Holo.Light" >
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+
+		<service
+			android:name=".ide.IDEService" >
+
+		</service>
+		<service 
+			android:name=".ide.IDEQuickWindow" >
+		</service>
+
+
+
+		<activity android:name="com.umeng.fb.ConversationActivity"
+			android:theme="@android:style/Theme.NoTitleBar"/>
+		<activity android:name="com.umeng.fb.ContactActivity"
+			android:theme="@android:style/Theme.NoTitleBar"/>
+		<service
+			android:name="com.umeng.update.net.DownloadingService"
+			android:process=":DownloadingService" >
+		</service>
+		<activity 
+			android:name="com.umeng.update.UpdateDialogActivity"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+		</activity>
+		<meta-data android:value="544aa737fd98c51f85034edf" android:name="UMENG_APPKEY"/>
+		<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
+
+
+        <activity
+            android:name="lecho.lib.filechooser.FileChooserActivity"
+            android:label="文件管理器"
+            android:theme="@android:style/Theme.Holo" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+
+
+
+        
+
+
+
+        <activity android:name="com.myopicmobile.textwarrior.android.TextWarriorApplication"
+			android:windowSoftInputMode="stateUnchanged|adjustResize"
+			android:launchMode="singleTask" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" /> 
+			</intent-filter>
+
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="text/*"
+					android:scheme="file" />
+			</intent-filter>
+
+		</activity>
+
+		<activity android:name="com.myopicmobile.textwarrior.android.FilePicker">
+		</activity>
+
+		<activity android:name="com.myopicmobile.textwarrior.android.TextWarriorSettings"
+			android:label="编辑器设置">
+		</activity>
+
+		<activity android:name="com.myopicmobile.textwarrior.android.TextWarriorHelp"
+			android:label="帮助">
+		</activity>
+		
+		
+		
+		
+		<activity
+            android:name="mao.bytecode.FileBrowser"
+            android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.Holo"
+            android:label="@string/apk_editor" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="mao.bytecode.ZipEditor"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/zip_editor" />
+        <activity
+            android:name="mao.bytecode.TextEditor"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/text_editor" />
+        <activity
+            android:name="mao.bytecode.ClassListActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/class_editor" />
+        <activity
+            android:name="mao.bytecode.ClassItemActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/class_item" />
+        <activity
+            android:name="mao.bytecode.SearchClassesActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/search_class" />
+        <activity
+            android:name="mao.bytecode.SearchMethodsActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/search_method" />
+        <activity
+            android:name="mao.bytecode.FieldListActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/field_list" />
+        <activity
+            android:name="mao.bytecode.FieldItemEditorActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/field_item_editor" />
+        <activity
+            android:name="mao.bytecode.FieldItemNewActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/field_item_new" />
+        <activity
+            android:name="mao.bytecode.MethodListActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/method_list" />
+        <activity
+            android:name="mao.bytecode.CodeEditorActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/code_editor" />
+        <activity
+            android:name="mao.bytecode.MethodItemEditorActivity"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/method_item_editor" />
+        <activity
+            android:name="mao.bytecode.MethodItemNewActivity"
+            android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.Holo"
+            android:label="@string/method_item_new" />
+        <activity
+            android:name="mao.bytecode.ClassInfoEditorActivity"
+            android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.Holo"
+            android:label="@string/class_info_editor" />
+        <activity
+            android:name="mao.bytecode.TextPreferences"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/text_preferences" />
+        <activity
+            android:name="mao.layoutviewer.LayoutViewer"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/layout_viewer" />
+        <activity
+            android:name="mao.bytecode.ImageViewer"
+			android:theme="@android:style/Theme.Holo"
+            android:configChanges="orientation|keyboardHidden" />
+        <activity
+            android:name="mao.bytecode.opcodes.OpcodeInfoActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/opcode_info" />
+
+    </application>
+</manifest>

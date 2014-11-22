@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="top|center"
+	android:padding="10dp"
+	android:background="@drawable/main_bg">
+
+	<ImageView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:src="@drawable/ide_logo_white"
+		android:id="@+id/img"/>
+
+	<ScrollView
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/sco"
+		android:layout_below="@id/img">
+
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:id="@+id/info"
+			android:textColor="#FDFDFD"
+			android:text="ROM-IDE 需要一套完整的开发环境才能正常使用所有功能\n   这套开发环境包括：gcc,jdk,ndktool,python,perl以及一些工具脚本\n   您不必担心这些环境会占用您宝贵的的/data分区，我们有一套核心技术，二进制以及脚本放在SD卡也能正常执行\n   感谢您的选择，请选择一项操作"/>
+
+	</ScrollView>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:layout_below="@id/sco"
+		android:orientation="vertical"
+		android:layout_alignParentBottom="true"
+		android:gravity="bottom">
+
+		<LinearLayout
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:gravity="left|center">
+
+			<Button
+				android:layout_height="wrap_content"
+				android:text="安装"
+				android:layout_width="match_parent"
+				android:id="@+id/install"
+				android:textColor="#FFFFFF"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>
+

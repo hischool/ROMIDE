@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:padding="10dp"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:background="@drawable/main_bg">
+
+	<LinearLayout
+		android:id="@+id/main_head"
+		android:layout_width="match_parent"
+		android:layout_height="40dp">
+
+		<TextView
+			android:layout_height="match_parent"
+			android:text="ROM-IDE"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:gravity="center"
+			android:textColor="#FFFFFF"/>
+
+		<TextView
+			android:layout_height="match_parent"
+			android:text="@string/ide_splash_romes"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:layout_width="match_parent"
+			android:gravity="right|center"
+			android:textColor="#F29415"/>
+
+	</LinearLayout>
+
+	<GridView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/ide_main_gv"
+		android:numColumns="2"
+		android:scrollbars="none"
+		android:columnWidth="100dp"
+		android:verticalSpacing="10dp"
+		android:horizontalSpacing="10dp"
+		android:layout_below="@id/main_head"/>
+
+</RelativeLayout>
+

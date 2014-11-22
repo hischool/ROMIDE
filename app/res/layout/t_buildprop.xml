@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="top|center">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="match_parent"
+		android:id="@+id/buildprop_file_name"
+		android:text="@string/no_open_file_clickme"/>
+
+	<ListView
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:layout_below="@id/buildprop_file_name"
+		android:id="@+id/buildprop_list"/>
+
+</RelativeLayout>
+

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	
+	
+	<!--<include 
+		layout="@layout/head"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>-->
+	
+	
+	<PreferenceCategory
+		android:title="内核工具">
+		
+		<Preference
+			android:padding="10dp"
+			android:title="解包 BOOT (MTK)"
+			android:key="mtk_unpack_boot"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="解包 BOOT (高通)"
+			android:key="gt_unpack_boot"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="解包 BOOT (展讯)"
+			android:key="sc_unpack_boot"/>
+		
+		<Preference
+			android:title="打包 BOOT (自动)"
+			android:padding="10dp" 
+			android:key="repack_boot"/>
+		
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:title="移植工具">
+
+		<Preference
+			android:padding="10dp"
+			android:title="移植 BOOT (MTK)"
+			android:summary="使用 MTK 方案移植boot"
+			android:key="mtk_port_boot"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="移植 BOOT (高通)"
+			android:summary="使用 高通 方案移植boot"
+			android:key="gt_port_boot"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="移植 BOOT (展讯)"
+			android:summary="使用 展迅 方案移植boot"
+			android:key="sc_port_boot"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="移植 ROM"
+			android:summary="该功能未完整测试！"
+			android:key="port_rom"/>
+
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:title="Apk/Zip 操作">
+
+		<Preference
+			android:padding="10dp"
+			android:title="签名文件"
+			android:summary="使用 keystore"
+			android:key="sign_file"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="Zipalign 优化"
+			android:summary="对文件进行 zipalign 优化"
+			android:key="zipalign_app"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="Odex 优化"
+			android:summary="为 apk 生成 odex"
+			android:key="odex_app"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="提取签名"
+			android:summary="从文件中提取 META-INF"
+			android:key="get_sign"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="删除签名"
+			android:summary="从文件中删除 META-INF"
+			android:key="del_sign"/>
+		
+
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:title="插件功能">
+		
+		<Preference
+			android:padding="10dp"
+			android:title="Apktool"
+			android:key="apktool"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="原生厨房"
+			android:key="kitchen"/>
+	
+	</PreferenceCategory>
+	
+	
+
+	<PreferenceCategory
+		android:title="其他">
+
+		<Preference
+			android:padding="10dp"
+			android:title="清理工作目录(谨慎)"
+			android:summary="清空工作目录所有文件夹"
+			android:key="clear_working"/>
+
+		<Preference
+			android:padding="10dp"
+			android:title="备份工作目录(建议)"
+			android:summary="备份工作目录所有文件夹"
+			android:key="backup_working"/>
+
+		<Preference
+			android:padding="10dp"
+			android:title="恢复工作目录"
+			android:summary="从最近的备份恢复工作目录"
+			android:key="restore_working"/>
+
+		<Preference
+			android:title="清理日志文件"
+			android:padding="10dp"
+			android:summary="删除自动生成的log文件"
+			android:key="clear_log"/>
+		
+		<Preference
+			android:title="清理备份文件"
+			android:padding="10dp"
+			android:summary="删除自动生成的bak文件"
+			android:key="clear_bak"/>
+
+	</PreferenceCategory>
+	
+</PreferenceScreen>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:padding="10dp"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center"
+	android:background="@drawable/main_bg">
+
+	<LinearLayout
+		android:id="@+id/wk_main_head"
+		android:layout_width="match_parent"
+		android:layout_height="40dp">
+
+		<TextView
+			android:layout_height="match_parent"
+			android:text="@string/ide_title_workspace"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:gravity="center"
+			android:textColor="#FFFFFF"/>
+
+		<TextView
+			android:layout_height="match_parent"
+			android:text="@string/no_open_project"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="match_parent"
+			android:gravity="right|center"
+			android:textColor="#F29415"
+			android:id="@+id/wk_main_opening_work"/>
+
+	</LinearLayout>
+
+	<GridView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/wk_main_gv"
+		android:numColumns="2"
+		android:scrollbars="none"
+		android:columnWidth="100dp"
+		android:verticalSpacing="10dp"
+		android:horizontalSpacing="10dp"
+		android:layout_below="@id/wk_main_head"/>
+
+</RelativeLayout>
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="top|center">
+
+	<TextView
+		android:layout_height="wrap_content"
+		android:text="请将插件放在 /sdcard/ROM-IDE 下"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_width="wrap_content"
+		android:id="@+id/ideplugintextview1"/>
+
+	<Spinner
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_below="@id/ideplugintextview1"
+		android:id="@+id/plugin_spinner"
+		android:layout_marginTop="12dp"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="安装！"
+		android:layout_width="match_parent"
+		android:layout_below="@id/plugin_spinner"
+		android:id="@+id/btn_plugin_install"/>
+
+	<Spinner
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_below="@id/btn_plugin_install"
+		android:id="@+id/plugin_spinner_insd"
+		android:layout_marginTop="20dp"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:text="卸载"
+		android:layout_width="match_parent"
+		android:layout_below="@id/plugin_spinner_insd"
+		android:id="@+id/btn_plugin_uninstall"/>
+
+</RelativeLayout>
+

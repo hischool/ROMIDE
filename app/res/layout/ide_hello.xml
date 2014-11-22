@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:flatui="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="3.0">
+
+		<at.markushi.ui.RevealColorView
+			android:id="@+id/colorView"
+			android:background="#212121"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"/>
+
+		<TextView
+			android:textSize="25sp"
+			android:textColor="#DDFFFFFF"
+			android:layout_gravity="center"
+			android:id="@+id/text"
+			android:text="欢迎使用 ROM-IDE\n\n轻触下方四个按钮获取简要信息"
+			android:paddingLeft="16dp"
+			android:paddingBottom="16dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="64dp"
+			android:fontFamily="sans-serif-light"
+			android:paddingRight="10dp"/>
+
+		<LinearLayout
+			android:layout_gravity="bottom"
+			android:orientation="horizontal"
+			android:paddingLeft="72dp"
+			android:paddingRight="16dp"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_marginBottom="8dp">
+
+			<Button
+				android:id="@+id/b1"
+				android:tag="#F08A3A"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="8dp"
+				android:text="界面"
+				android:layout_weight="1.0"
+				android:fontFamily="sans-serif-light"
+				android:background="#32000000"
+				android:textColor="#FFFFFF"/>
+
+			<Button
+				android:id="@+id/b2"
+				android:tag="#AB52B5"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="8dp"
+				android:text="功能"
+				android:layout_weight="1.0"
+				android:fontFamily="sans-serif-light"
+				android:background="#32000000"
+				android:textColor="#FFFFFF"/>
+
+			<Button
+				android:id="@+id/b3"
+				android:text="服务"
+				android:tag="#DD49475A"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_marginRight="8dp"
+				android:layout_weight="1.0"
+				android:fontFamily="sans-serif-light"
+				android:background="#32000000"
+				android:textColor="#FFFFFF"/>
+
+			<Button
+				android:id="@+id/b4"
+				android:text="核心"
+				android:tag="#e91e63"
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:fontFamily="sans-serif-light"
+				android:layout_weight="1.0"
+				android:background="#32000000"
+				android:textColor="#FFFFFF"/>
+
+		</LinearLayout>
+
+	</FrameLayout>
+
+	<LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#212121">
+
+		<Button
+			android:id="@+id/next"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fontFamily="sans-serif-light"
+			android:text="下一步"
+			android:tag="#212121"
+			android:background="#32000000"
+			android:textColor="#FFFFFF"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	
+	
+	<string name="format_data">格式化 data</string>
+	<string name="format_system">格式化 system</string>
+	
+	<string name="exit">退出</string>
+	<string name="update_success">更新成功</string>
+	<string name="unknown">未知</string>
+	<string name="last_version">上个版本:</string>
+	<string name="cur_version">当前版本:</string>
+	<string name="update_log">更新信息:</string>
+	<string name="sure_exit">确定退出？</string>
+	<string name="exit_msg">所有工作都完成了吗？</string>
+	<string name="developing">开发中</string>
+	<string name="download_truly">下载正版 ROM-IDE</string>
+	<string name="warning">警告</string>
+	<string name="error">错误</string>
+	<string name="nodata_dir">您未正确放置数据包！请保证 ROM-IDE 文件夹存在于 SD 卡根目录下</string>
+	<string name="isnot_truly_apk">您下载的是被二次打包后的apk，可能经过恶意修改，会对您的设备造成威胁！请在正规网站下载！</string>
+	<string name="cannot_download">为安装浏览器，无法下载</string>
+	<string name="main_romteach">ROM 教程</string>
+	
+	
+	
+	
+	
+	<string name="yes">确定</string>
+	<string name="no">取消</string>
+	<string name="ide_title_rule">使用引导</string>
+	<string name="ide_title_buildprop">Build.prop 编辑器</string>
+	<string name="ide_title_portboot">Boot 移植</string>
+	<string name="ide_title_portrom">ROM 移植</string>
+	<string name="ide_title_terminal">终端模拟器</string>
+	<string name="ide_title_more">更多功能</string>
+	<string name="ide_title_gui">基础功能</string>
+	<string name="ide_title_signer">签名工具</string>
+	<string name="ide_title_install">安装环境</string>
+	<string name="ide_title_plugin">插件管理</string>
+	<string name="ide_title_apktool">Apktool 工具</string>
+	<string name="ide_title_about">关于 ROM-IDE</string>
+	<string name="ide_title_editor">文本编辑器</string>
+	<string name="ide_title_preference">配置 ROM-IDE</string>
+	<string name="ide_title_portmethodmgr">移植管理</string>
+	<string name="ide_title_workspace">ROM 工作室</string>
+	<string name="ide_title_wkcreatenew">创建新的 ROM</string>
+	
+	
+	
+	<string name="ide_splash_romes">为 ROM 而生</string>
+	<string name="ide_terminal_type_idecommand">输入 ROM-IDE 命令</string>
+	<string name="ide_terminal_send">发送</string>
+	<string name="browser_find">浏览</string>
+	<string name="base_file_path">官方文件路径</string>
+	<string name="sam_file_path">待移植文件路径</string>
+	<string name="other_options">其他选项</string>
+	<string name="cpu">CPU 类型</string>
+	<string name="cpu_mtk">MTK</string>
+	<string name="cpu_gt">高通</string>
+	<string name="cpu_sc">展讯</string>
+	<string name="port_start">开始移植</string>
+	<string name="no_open_file_clickme">无打开文件(点我选择)</string>
+	<string name="no_open_file">无打开文件</string>
+	<string name="sign_start">开始签名</string>
+	<string name="input_file_path">输入文件路径</string>
+	<string name="output_file_path">输出文件路径</string>
+	<string name="no_open_project">无打开工程</string>
+	<string name="rom_location">位于 /sdcard/ROM-Workspace</string>
+	<string name="rom_name">名称</string>
+	<string name="rom_another">作者</string>
+	<string name="rom_version">版本</string>
+	<string name="rom_dump_system">从当前系统提取 system</string>
+	<string name="rom_tar">不压缩 (tar)</string>
+	<string name="rom_gz">使用 gz 压缩</string>
+	<string name="rom_bz2">使用 bz2 压缩</string>
+	<string name="rom_useboot">使用 boot.img</string>
+	<string name="rom_create">创建 ROM</string>
+	<string name="rom_apply">应用</string>
+	
+	
+	
+	
+	
+	
+
+	<string name="umeng_fb_back">返回</string>
+    <string name="umeng_fb_contact_info">联系方式</string>
+    <string name="umeng_fb_contact_info_hint">QQ, 电话等我们能联系您的联系方式</string>
+    <string name="umeng_fb_contact_title">填写联系信息</string>
+    <string name="umeng_fb_contact_update_at">更新于 </string>
+    <string name="umeng_fb_notification_content_formatter_multiple_msg">收到来自开发者的 %d 条回复。</string>
+    <string name="umeng_fb_notification_content_formatter_single_msg">新回复: %s</string>
+    <string name="umeng_fb_notification_ticker_text">有新的回复</string>
+    <string name="umeng_fb_reply_content_default">你好， 我是产品经理，欢迎您反馈使用产品的感受和建议</string>
+    <string name="umeng_fb_reply_content_hint">我想说</string>
+    <string name="umeng_fb_reply_date_default">2013年3月12日 13:24:00</string>
+    <string name="umeng_fb_send">发送</string>
+    <string name="umeng_fb_title">用户反馈</string>
+
+    <string name="empty_directory">空目录</string>
+    <string name="storage_removed">存储设备已卸载或不存在</string>
+    <string name="choose_file">选择文件</string>
+    <string name="error_selecting_file">选择文件错误</string>
+    <string name="internal_storage">网络文件</string>
+	<string name="chooser_title">选择一个项目</string>
+	<string name="application_ide">ROM IDE</string>
+	<string name="tellme">意见反馈</string>
+
+    <string name="umeng_common_action_info_exist">正在下载中.</string>
+    <string name="umeng_common_info_interrupt">下载出错啦，请检查网络后继续。</string>
+    <string name="umeng_common_action_pause">暂停</string>
+    <string name="umeng_common_action_continue">继续</string>
+    <string name="umeng_common_action_cancel">取消</string>
+    <string name="umeng_common_download_notification_prefix">正在下载: </string>
+    <string name="umeng_common_pause_notification_prefix">暂停: </string>
+    <string name="umeng_common_start_download_notification">正在下载应用</string>
+    <string name="umeng_common_start_patch_notification">正在更新安装包</string>
+    <string name="umeng_common_network_break_alert">请连接网络后再尝试！</string>
+    <string name="umeng_common_download_failed">下载失败</string>
+    <string name="umeng_common_download_finish">下载完成，请点击安装</string>
+    <string name="umeng_common_patch_finish">更新完成，请点击安装</string>
+    <string name="umeng_common_silent_download_finish">新版本已经准备好，请点击安装</string>
+    <string name="UMBreak_Network">未联网</string>
+    <string name="UMUpdateTitle">发现新版本</string>
+    <string name="UMNewVersion">最新版本: </string>
+    <string name="UMUpdateContent">更新内容</string>
+    <string name="UMUpdateSize">仅需要下载:</string>
+    <string name="UMTargetSize">新版本大小:</string>
+    <string name="UMGprsCondition">（提示：非WIFI环境）</string>
+    <string name="UMUpdateNow">立即更新</string>
+    <string name="UMAppUpdate">应用更新</string>
+    <string name="UMNotNow">以后再说</string>
+    <string name="UMIgnore">忽略该版</string>
+    <string name="UMToast_IsUpdating">正在更新中....</string>
+    <string name="UMDialog_InstallAPK">最新版本已下载，是否安装？</string>
+    <string name="UMUpdateCheck">2.4.2.20140520</string>
+    <string name="umeng_fb_powered_by">Powered by</string>
+    <string name="umeng_common_icon">icon</string>
+
+	
+	<string name="about_text">
+		<b>文侠 0.93</b>\n
+		Android 版\n
+		\n
+		版权所有 2013 Tah Wei Hoon\n
+		此程序使用授权条款 Apache 2.0 授权\n
+		\n
+		\n
+		<b>文件浏览器：</b>\n
+		OpenIntents\n
+		http://www.openintents.org\n
+		Apache 2.0 授权条款\n
+		\n
+		\n
+		<b>图标：</b>\n
+		Everaldo Coelho\n
+		http://www.everaldo.com/crystal\n
+		LGPL 2.1 授权条款\n
+		\n
+		Yusuke Kamiyamane\n
+		http://p.yusukekamiyamane.com\n
+		CC-BY 3.0 授权条款\n
+		\n
+		Lufang Hsiung\n
+		\n
+		\n
+		<b>字型：</b>\n
+		Bitstream, Inc.\n
+		\n
+		Tristan Grimmer\n
+		\n
+		\n
+		<b>翻译：</b>\n
+		Tom Arn(德文帮助内容)\n
+		\n
+		\n
+		请把程序问题和建议发送到 hoon.tw@gmail.com
+	</string>
+	<string name="dialog_confirm_overwrite">已经存在此名的文件。是否要替换？</string>
+	<string name="dialog_prompt_save">保存更改？</string>
+	<string name="dialog_file_save_success">文件已保存</string>
+	<string name="dialog_find_no_results">未找到</string>
+	<string name="dialog_replace_all_result">替换次数：</string>
+	<string name="dialog_replace_no_selection">没有被选取的文字可替换</string>
+	<string name="dialog_go_to_line">跳到行</string>
+	<string name="dialog_go_to_line_text_hint">行号</string>
+	<string name="dialog_recent_files">@string/menu_recent_files</string>
+	<string name="dialog_recent_files_none">最近没有打开任何文件。</string>
+	<string name="dialog_statistics">属性</string>
+	<string name="dialog_statistics_words">词数</string>
+	<string name="dialog_statistics_chars">字符数</string>
+	<string name="dialog_statistics_no_whitespace">字符数 (不包括空格)</string>
+	<string name="dialog_statistics_rows">段数 </string>
+	<string name="dialog_statistics_format">原编码</string>
+	<string name="dialog_statistics_line_terminator_style">原行尾格式</string>
+	<string name="dialog_about">关于文侠</string>
+	<string name="dialog_button_discard">舍弃</string>
+	<string name="dialog_button_overwrite">替换</string>
+	<string name="dialog_button_go_back">返回</string>
+	<string name="dialog_button_save">@string/menu_save</string>
+	<string name="dialog_button_save_different_name">另存为</string>
+	<string name="dialog_error_file_open">无法打开文件：</string>
+	<string name="dialog_error_file_save">无法保存文件：</string>
+	<string name="dialog_error_not_a_file">此名已被用为文件夹名。请保存为另一个文件。</string>
+	<string name="dialog_error_attempt_overwrite_read_only">此文件只能读，不准写。</string>
+	<string name="dialog_error_attempt_overwrite_recovery">此文件夹是用来做备份。禁止保存。</string>
+	<string name="dialog_error_no_file_name">请输入文件名</string>
+	<string name="dialog_error_file_write_denied">不准许保存在这个文件夹。</string>
+	<string name="dialog_sorry">抱歉。</string>
+	<string name="dialog_sorry_force_resume">为了保存资源，文侠被停止。</string>
+	<string name="dialog_sorry_backup_disabled">未保存的更改已被舍弃。请以后启用〝自动做备份〞。</string>
+	<string name="dialog_sorry_missing_recovery">备份原本存在 %1$s，可是现在找不到。\u000A
+		\u000A请尽快查看这个文件夹。</string>
+	<string name="dialog_sorry_read_error">如果有SD卡存在, 备份会在 %1$s 保存。\u000A
+		\u000A请尽快查看这个文件。</string>
+	<string name="dialog_sorry_write_error">无法做备份。未保存的更改已被舍弃。\u000A
+		\u000A请确定是否有足够的存储空间。</string>
+	<string name="progress_dialog_find">搜索中&#8230;</string>
+	<string name="progress_dialog_replace">替换中&#8230;</string>
+	<string name="progress_dialog_analyze">分析中&#8230;</string>
+	<string name="progress_dialog_open">打开中&#8230;</string>
+	<string name="progress_dialog_save">保存中&#8230;</string>
+	<string name="progress_dialog_message">请稍等&#8230;</string>
+
+	<string name="file_picker_inform_empty">此文件夹是空的。</string>
+	<string name="file_picker_title_pick_file">请选取将打开的文件</string>
+	<string name="file_picker_title_enter_filename">请输入将保存的文件名</string>
+	<string name="file_picker_label_save">@string/menu_save</string>
+	<string name="file_picker_file_not_found">@string/dialog_find_no_results</string>
+
+	<string name="find_panel_find_label">搜索</string>
+	<string name="find_panel_replace_label">替换</string>
+	<string name="find_panel_options">搜索设置 （限于英文字母）</string>
+	<string name="find_panel_case_sensitive">区分大小写</string>
+	<string name="find_panel_match_whole_word">匹配整个单词</string>
+
+	<string name="title">文本编辑器</string>
+	<string name="help_title">帮助</string>
+
+	<string name="menu_about">关于</string>
+	<string name="menu_change_input_method">输入法</string>
+	<string name="menu_find_panel_toggle">搜索/替换</string>
+	<string name="menu_go_to_line">跳到行&#8230;</string>
+	<string name="menu_help">帮助</string>
+	<string name="menu_new">新建</string>
+	<string name="menu_open">打开</string>
+	<string name="menu_recent_files">最近的文件</string>
+	<string name="menu_save">保存</string>
+	<string name="menu_save_as">另存为&#8230;</string>
+	<string name="menu_select_all">全部选中</string>
+	<string name="menu_statistics">词数统计与属性</string>
+	<string name="menu_settings">设置</string>
+	<string name="menu_undo">撤消</string>
+	<string name="menu_redo">重做</string>
+
+
+	<string name="settings_title">设置</string>
+	<string name="settings_group_view">视图</string>
+	<string name="settings_group_navigation">浏览</string>
+	<string name="settings_group_formatting">字符格式</string>
+	<string name="settings_group_io">打开与保存</string>
+	<string name="settings_group_text_selection">文字选取</string>
+
+	<string name="settings_label_auto_backup">自动做备份</string>
+	<string name="settings_desc_auto_backup"></string>
+	<string name="settings_label_auto_close_clipboard">自动收回剪贴板</string>
+	<string name="settings_desc_auto_close_clipboard">取消选取时隐藏剪贴板</string>
+	<string name="settings_label_auto_display_keyboard">自动显示软键</string>
+	<string name="settings_desc_auto_display_keyboard">按屏幕时显示软键</string>
+	<string name="settings_label_auto_indent">自动缩排</string>
+	<string name="settings_desc_auto_indent"></string>
+	<string name="settings_label_auto_open_clipboard">自动打开剪贴板</string>
+	<string name="settings_desc_auto_open_clipboard">进行选取时显示剪贴板</string>
+	<string name="settings_label_chirality">左／右撇子</string>
+	<string name="settings_desc_chirality"></string>
+	<string name="settings_label_color_scheme">配色方案</string>
+	<string name="settings_desc_color_scheme"></string>
+	<string name="settings_label_drag_select">拖选</string>
+	<string name="settings_desc_drag_select">用光标拖动来选取文字</string>
+	<string name="settings_label_file_input_format">打开文件的编码</string>
+	<string name="settings_desc_file_input_format"></string>
+	<string name="settings_label_file_output_format">保存文件的编码</string>
+	<string name="settings_desc_file_output_format"></string>
+	<string name="settings_label_font">字体类型</string>
+	<string name="settings_desc_font"></string>
+	<string name="settings_label_highlight_current_row">在目前的行下画线</string>
+	<string name="settings_label_line_terminator_style">行尾格式</string>
+	<string name="settings_desc_line_terminator_style"></string>
+	<string name="settings_label_long_press_capitalize">持久按导致大写</string>
+	<string name="settings_desc_long_press_capitalize">持久按内建键盘的英文字母按键会导致大写</string>
+	<string name="settings_label_navigation_method">光标移动方式</string>
+	<string name="settings_desc_navigation_method">要知道更多详情，请阅读帮助。</string>
+	<string name="settings_label_show_nonprinting">无印标志显示</string>
+	<string name="settings_desc_show_nonprinting">显示空格，跳格和行尾</string>
+	<string name="settings_label_show_row_number">目前的行号显示</string>
+	<string name="settings_desc_show_row_number"></string>
+	<string name="settings_label_syntax_color">语法高亮</string>
+	<string name="settings_desc_syntax_color">突出显示程式语言所用的词汇</string>
+	<string name="settings_label_tab_spaces">跳格宽度</string>
+	<string name="settings_desc_tab_spaces">多少个空格为一个跳格</string>
+	<string name="settings_label_word_wrap">自动换行</string>
+	<string name="settings_desc_word_wrap"></string>
+	<string name="settings_label_zoom_size">显示比例％</string>
+	<string name="settings_desc_zoom_size"></string>
+
+
+	<string-array
+		name="settings_entries_chirality">
+		<item>右撇子</item>
+		<item>左撇子</item>
+	</string-array>
+
+	<string-array
+		name="settings_entries_color_scheme">
+		<item>浅</item>
+		<item>深</item>
+		<item>阳光 (浅)</item>
+		<item>阳光 (深)</item>
+		<item>黑曜石</item>
+	</string-array>
+
+	<string-array
+		name="settings_entries_font">
+		<item>无衬线 (sans-serif)</item>
+		<item>衬线 (serif)</item>
+		<item>等宽</item>
+		<item>柔和</item>
+		<item>细小</item>
+	</string-array>
+
+	<string-array
+		name="settings_entries_navigation_method">
+		<item>基本</item>
+		<item>跟踪板</item>
+		<item>溜溜球</item>
+		<item>液形</item>
+		<item>音量按键</item>
+	</string-array>
+
+	<string-array
+		name="settings_entries_syntax_color">
+		<item>无</item>
+		<item>@string/settings_syntax_c</item>
+		<item>@string/settings_syntax_cpp</item>
+		<item>@string/settings_syntax_csharp</item>
+		<item>@string/settings_syntax_java</item>
+		<item>@string/settings_syntax_javascript</item>
+		<item>@string/settings_syntax_objc</item>
+		<item>@string/settings_syntax_php</item>
+		<item>@string/settings_syntax_python</item>
+		<item>@string/settings_syntax_ruby</item>
+	</string-array>
+	
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+		android:title="特殊工具">
+		
+		<Preference
+			android:padding="10dp"
+			android:title="信息修改"
+			android:summary="编辑build.prop信息"
+			android:key="build_prop"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="文本编辑器"
+			android:summary="编辑文件"
+			android:key="edit"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="Apk 编辑器"
+			android:summary="编辑 apk"
+			android:key="apk_editor"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="文件管理器"
+			android:summary="管理设备的文件"
+			android:key="file_man"/>
+		
+		<Preference
+			android:padding="10dp"
+			android:title="移植方案管理"
+			android:summary="管理存在的移植方案"
+			android:key="port_method_manager"/>
+			
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:title="高级工具">
+
+		<Preference
+			android:padding="10dp"
+			android:title="打开终端环境"
+			android:key="terminal"/>
+
+	</PreferenceCategory>
+	
+</PreferenceScreen>
