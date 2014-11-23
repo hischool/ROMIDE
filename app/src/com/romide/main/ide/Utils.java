@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.*;
 import me.drakeet.materialdialog.*;
 import com.romide.plugin.tasks.*;
+import android.content.pm.PackageManager.*;
 
 public class Utils
 {
@@ -30,43 +31,65 @@ public class Utils
 		m.exec("ls " + dir);
 		String out = m.getStdout();
 		String[] item = out.split(" ");
-		String list = "";
+		StringBuffer list = new StringBuffer();;
 		for (int i=0;i < item.length;i++)
 		{
-			list += item[i] + "\n";
+			list.append(item[i]);
+			list.append("\n");
 		}
-		return list.split("\\n");
+		return list.toString().split("\\n");
 	}
 
-
-	public static boolean isTrulyApk(Context c)
-	{
-		boolean is = false;
-		final int key = -1923360755;
+	
+	static {
+		System.loadLibrary("romide");
+	}
+	
+	public static int isTrulyApk(Context c){
+		int code = -1;
 		try
 		{
 			PackageInfo packageInfo = c.getPackageManager().getPackageInfo(c.getPackageName(), PackageManager.GET_SIGNATURES);
 			Signature[] signs = packageInfo.signatures;
 			Signature sign = signs[0];
-			int code = sign.hashCode();
-			//EditText d = new EditText(c);
-			//d.setText(code+"");
-			//new AlertDialog.Builder(c).setView(d).show();
-			if (code == key)
-			{
-				is = true;
-			}
-			else
-			{
-				is = false;
-			}
+			code = sign.hashCode();
 		}
 		catch (PackageManager.NameNotFoundException e)
-		{
-			is = false;
-		} 
-		return is;
+		{}
+		
+		return isTrulyApkReal(code);
 	}
+	
+	public static native int isTrulyApkReal(int code);
+
+//	public static boolean isTrulyApk(Context c)
+//	{
+//		boolean is = false;
+//		final int key = -1923360755;
+//		try
+//		{
+//			PackageInfo packageInfo = c.getPackageManager().getPackageInfo(c.getPackageName(), PackageManager.GET_SIGNATURES);
+//			Signature[] signs = packageInfo.signatures;
+//			Signature sign = signs[0];
+//			int code = sign.hashCode();
+//			//EditText d = new EditText(c);
+//			//d.setText(code+"");
+//			//new AlertDialog.Builder(c).setView(d).show();
+//			if (code == key)
+//			{
+//				is = true;
+//			}
+//			else
+//			{
+//				is = false;
+//			}
+//		}
+//		catch (PackageManager.NameNotFoundException e)
+//		{
+//			is = false;
+//		} 
+//		return is;
+//	}
 
 	public static void showCommandResult(Context con, Command c, String t)
 	{

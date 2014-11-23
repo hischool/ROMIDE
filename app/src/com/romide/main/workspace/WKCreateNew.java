@@ -61,24 +61,44 @@ public class WKCreateNew extends Activity implements View.OnClickListener,Compou
 			rom.setAnother(edit_another.getText().toString());
 			rom.createProject();
 			
-			String cmd = "sh " + WKMain.SCRIPTDIR.getAbsolutePath() + "/mkrom.init_rom "+rom.getRomdir() + " && ";
+			StringBuffer bf = new StringBuffer();
+			
+			bf.append("sh ");
+			bf.append(WKMain.SCRIPTDIR.getAbsolutePath());
+			bf.append("/mkrom.init_rom ");
+			bf.append(rom.getRomdir());
+			bf.append(" && ");
 		
 			//判断操作
 			
 			//清除数据
 			if(format_data.isChecked()){
-				cmd += "sh " + WKMain.SCRIPTDIR.getAbsolutePath() + "/mkrom.format_data " + rom.getRomdir() + " && ";
+				bf.append("sh ");
+				bf.append(WKMain.SCRIPTDIR.getAbsolutePath());
+				bf.append("/mkrom.format_data ");
+				bf.append(rom.getRomdir());
+				bf.append(" && ");
 			}
 			
 			if(format_system.isChecked()){
-				cmd += "sh " + WKMain.SCRIPTDIR.getAbsolutePath() + "/mkrom.format_system " + rom.getRomdir() + " && ";
+				bf.append("sh ");
+				bf.append(WKMain.SCRIPTDIR.getAbsolutePath());
+				bf.append("/mkrom.format_system ");
+				bf.append(rom.getRomdir());
+				bf.append(" && ");
 			}
 			
 			//使用boot.img
 			if(use_boot.isChecked()){
 				String bootpath;
 				bootpath = use_boot_edit_path.getText().toString();
-				cmd += "sh " + WKMain.SCRIPTDIR.getAbsolutePath() + "/mkrom.use_boot "+rom.getRomdir()+ " " + bootpath + " && ";
+				bf.append("sh ");
+				bf.append(WKMain.SCRIPTDIR.getAbsolutePath());
+				bf.append("/mkrom.use_boot ");
+				bf.append(rom.getRomdir());
+				bf.append(" ");
+				bf.append(bootpath);
+				bf.append(" && ");
 			}
 			
 			//提取system
@@ -88,17 +108,23 @@ public class WKCreateNew extends Activity implements View.OnClickListener,Compou
 				if(system_gz.isChecked())  compress = "gz";
 				if(system_bz2.isChecked()) compress = "bz2";
 				
-				cmd += "sh " + WKMain.SCRIPTDIR.getAbsolutePath() + "/mkrom.dump_system "+rom.getRomdir()+ " " + compress + " && ";
+				bf.append("sh ");
+				bf.append(WKMain.SCRIPTDIR.getAbsolutePath());
+				bf.append("/mkrom.dump_system ");
+				bf.append(rom.getRomdir());
+				bf.append(" ");
+				bf.append(compress);
+				bf.append(" && ");
 			}
 			
 			
-			cmd += "echo";
+			bf.append("echo -n");
 			
 			IDECommandTask task = new IDECommandTask(new ProgressDialog(this),"正在应用配置","请稍等");
 			task.setContext(this);
 			task.setResultDialog(new AlertDialog.Builder(this));
 			task.setNeedCopy(false);
- 			task.execute(cmd);
+ 			task.execute(bf.toString());
 
 			
 			Intent i = new Intent();

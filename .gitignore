@@ -6,3 +6,4 @@ temp/
 test/
 push.sh
 ssh/
+app/obj/

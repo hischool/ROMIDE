@@ -243,7 +243,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	//检测apk
 	public void doInitSystem()
 	{
-		if (!Utils.isTrulyApk(this))
+		if (Utils.isTrulyApk(this)!=0)
 		{
 			MaterialDialog d = new MaterialDialog(this);
 			d.setTitle(R.string.warning);
