@@ -30,8 +30,7 @@
 
 	
 	
-	
-	
+
 	<string name="ide_title_rule">Rule</string>
 	<string name="ide_title_buildprop">Build.prop Editor</string>
 	<string name="ide_title_portboot">Port Boot</string>

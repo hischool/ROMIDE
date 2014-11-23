@@ -36,7 +36,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		if (key.equals(MORE))  doMore();
 		if (key.equals(TEACH)) doTeach();
 		if (key.equals(WORKSPACE)) doWorkSpace();
-		if (key.equals(INSTALL)) doInstall();
+		if (key.equals(ABOUT)) doAbout();
 		if (key.equals(PLUGIN)) doPlugin();
 		if (key.equals(TELLME)) doTellme();
 		if (key.equals(SETTINGS)) doSettings();
@@ -61,7 +61,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	private static String MORE  = "高级功能";
 	private static String TEACH = "ROM 教程";
 	private static String WORKSPACE = "ROM 工作";
-	private static String INSTALL = "安装环境";
+	private static String ABOUT = "关于";
 	private static String PLUGIN = "插件管理";
 	private static String TELLME = "意见反馈";
 	private static String SETTINGS = "系统设置";
@@ -110,7 +110,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		MORE = r.getString(R.string.ide_title_more);
 		TEACH = r.getString(R.string.main_romteach);
 		WORKSPACE = r.getString(R.string.ide_title_workspace);
-		INSTALL = r.getString(R.string.ide_title_install);
+		ABOUT = r.getString(R.string.ide_title_about);
 		PLUGIN = r.getString(R.string.ide_title_plugin);
 		TELLME = r.getString(R.string.tellme);
 		SETTINGS = r.getString(R.string.ide_title_preference);
@@ -129,7 +129,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			MORE,
 			TEACH,
 			WORKSPACE,
-			INSTALL,
+			ABOUT,
 			PLUGIN,
 			TELLME,
 			SETTINGS,
@@ -359,11 +359,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		{
 			dialog(IDEMain.this, "异常信息", e.toString());
 		}
-	}
-
-	public void doInstall()
-	{
-		return;
 	}
 
 	public void doPlugin()
