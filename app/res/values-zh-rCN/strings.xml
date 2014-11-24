@@ -3,9 +3,13 @@
 <resources>
 	
 	
+	<string name="hello_ui">界面</string>
+	<string name="hello_core">核心</string>
+	<string name="hello_service">服务</string>
+	<string name="next">下一步</string>
+	
 	<string name="format_data">格式化 data</string>
 	<string name="format_system">格式化 system</string>
-	
 	<string name="exit">退出</string>
 	<string name="update_success">更新成功</string>
 	<string name="unknown">未知</string>

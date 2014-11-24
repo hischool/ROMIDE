@@ -103,8 +103,8 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 			doOpenTermenv();
 		}
 		else if(key.equals(mEditKey)){
-			//startActivity(new Intent(this,IDEEdit.class));
-			startActivity(new Intent(this,com.myopicmobile.textwarrior.android.TextWarriorApplication.class));
+			startActivity(new Intent(this,IDEEdit.class));
+			//startActivity(new Intent(this,com.myopicmobile.textwarrior.android.TextWarriorApplication.class));
 		}
 		else if(key.equalsIgnoreCase(mApkEditorKey)){
 			startActivity(new Intent(this,mao.bytecode.FileBrowser.class));

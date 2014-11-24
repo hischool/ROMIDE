@@ -15,8 +15,9 @@ import android.content.pm.PackageManager.*;
 public class Utils
 {
 
-	public static void main()
-	{
+	public static void main(String[] args){
+		System.out.println(args.toString());
+		System.err.println("ERROR!"); 
 	}
 	
 	

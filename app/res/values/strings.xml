@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
+	
+	<string name="hello_ui">UI</string>
+	<string name="hello_core">Core</string>
+	<string name="hello_service">Service</string>
+	<string name="next">下一步</string>
 	
 
 	<string name="format_data">Format data</string>
 	<string name="format_system">Format system</string>
-	
-	
-	
-	
-
-
 	<string name="exit">Exit</string>
 	<string name="update_success">ROM-IDE has been updated</string>
 	<string name="unknown">Unknown</string>
@@ -28,8 +28,8 @@
 	<string name="cannot_download">Cannot open browser</string>
 	<string name="main_romteach">ROM Helper</string>
 
-	
-	
+
+
 
 	<string name="ide_title_rule">Rule</string>
 	<string name="ide_title_buildprop">Build.prop Editor</string>
@@ -48,7 +48,7 @@
 	<string name="ide_title_portmethodmgr">Port Manager</string>
 	<string name="ide_title_workspace">ROM Workspace</string>
 	<string name="ide_title_wkcreatenew">Create New ROM</string>
-	
+
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
 	<string name="ide_splash_romes">Bron to ROM</string>
@@ -80,10 +80,10 @@
 	<string name="rom_useboot">Use boot.img</string>
 	<string name="rom_create">Create ROM</string>
 	<string name="rom_apply">Apply</string>
-	
-	
-	
-	
+
+
+
+
 	<string name="settings_key_auto_backup">Auto-backup</string>
 	<string name="settings_key_auto_close_clipboard">Auto-close clipboard</string>
 	<string name="settings_key_auto_display_keyboard">Auto-display keyboard</string>
@@ -390,7 +390,7 @@
 		<item>@string/settings_syntax_python</item>
 		<item>@string/settings_syntax_ruby</item>
 	</string-array>
-	
+
     <string name="empty_directory">The directory is empty</string>
     <string name="storage_removed">Storage device not found</string>
     <string name="choose_file">Select a file</string>
@@ -398,54 +398,54 @@
     <string name="internal_storage">Internet</string>
 	<string name="chooser_title">Select a item</string>
 	<string name="application_ide">ROM IDE</string>
-  <string name="tellme">Feedback</string>
-  
-  
+	<string name="tellme">Feedback</string>
+
+
   	<string name="fc_back_button_description">Go up</string>
     <string name="fc_home_button_description">Go home</string>
     <string name="fc_close_button_description">Close</string>
     <string name="fc_file_icon_description">Item Icon</string>
 
-	
-		<string name="about_text">
-<b>TextWarrior 0.93</b>\n
-for Android\n
-\n
-Copyright 2013 Tah Wei Hoon\n
-This program is made available under the terms of Apache License Version 2.0\n
-\n
-\n
-<b>File browser by</b>\n
-OpenIntents\n
-http://www.openintents.org\n
-Licensed under Apache Version 2.0\n
-\n
-\n
-<b>Icons by</b>\n
-Everaldo Coelho\n
-http://www.everaldo.com/crystal\n
-Licensed under LGPL 2.1\n
-\n
-Yusuke Kamiyamane\n
-http://p.yusukekamiyamane.com\n
-Licensed under CC-BY 3.0\n
-\n
-Lufang Hsiung\n
-\n
-\n
-<b>Fonts by</b>\n
-Bitstream, Inc.\n
-\n
-Tristan Grimmer\n
-\n
-\n
-<b>Translations by</b>\n
-Tom Arn (German help file)\n
-\n
-\n
-Send feedback, suggestions and bug reports to hoon.tw@gmail.com
+
+	<string name="about_text">
+		<b>TextWarrior 0.93</b>\n
+		for Android\n
+		\n
+		Copyright 2013 Tah Wei Hoon\n
+		This program is made available under the terms of Apache License Version 2.0\n
+		\n
+		\n
+		<b>File browser by</b>\n
+		OpenIntents\n
+		http://www.openintents.org\n
+		Licensed under Apache Version 2.0\n
+		\n
+		\n
+		<b>Icons by</b>\n
+		Everaldo Coelho\n
+		http://www.everaldo.com/crystal\n
+		Licensed under LGPL 2.1\n
+		\n
+		Yusuke Kamiyamane\n
+		http://p.yusukekamiyamane.com\n
+		Licensed under CC-BY 3.0\n
+		\n
+		Lufang Hsiung\n
+		\n
+		\n
+		<b>Fonts by</b>\n
+		Bitstream, Inc.\n
+		\n
+		Tristan Grimmer\n
+		\n
+		\n
+		<b>Translations by</b>\n
+		Tom Arn (German help file)\n
+		\n
+		\n
+		Send feedback, suggestions and bug reports to hoon.tw@gmail.com
 	</string>
-	
+
 	<string name="umeng_common_action_info_exist">The app is already in downloading list.</string>
     <string name="umeng_common_info_interrupt">dowload interrupted.</string>
     <string name="umeng_common_action_pause">Pause</string>
@@ -490,5 +490,5 @@ Send feedback, suggestions and bug reports to hoon.tw@gmail.com
     <string name="umeng_fb_reply_date_default">2013-3-12 13:24:00</string>
     <string name="umeng_fb_send">Send</string>
     <string name="umeng_fb_title">Feedback</string>
-	
+
 </resources>

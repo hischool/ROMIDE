@@ -16,11 +16,11 @@ public class IDEHello extends Activity implements OnClickListener
 {
 
 	private RevealColorView colorView;
-	private Button ui;
-	private Button ac;
-	private Button se;
-	private Button co;
-	private Button next;
+	private android.widget.Button ui;
+	private android.widget.Button ac;
+	private android.widget.Button se;
+	private android.widget.Button co;
+	private android.widget.Button next;
 
 	private TextView tv;
 
@@ -36,7 +36,7 @@ public class IDEHello extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.ide_hello);
-
+	
 		init();
 	}
 
@@ -45,11 +45,11 @@ public class IDEHello extends Activity implements OnClickListener
 		// TODO: Implement this method
 		colorView = (RevealColorView) findViewById(R.id.colorView);
 
-		ui = (Button) findViewById(R.id.b1);
-		ac = (Button) findViewById(R.id.b2);
-		se = (Button) findViewById(R.id.b3);
-		co = (Button) findViewById(R.id.b4);
-		next = (Button) findViewById(R.id.next);
+		ui = (android.widget.Button) findViewById(R.id.b1);
+		ac = (android.widget.Button) findViewById(R.id.b2);
+		se = (android.widget.Button) findViewById(R.id.b3);
+		co = (android.widget.Button) findViewById(R.id.b4);
+		next = (android.widget.Button) findViewById(R.id.next);
 		tv = (TextView) findViewById(R.id.text);
 
 		backgroundColor = Color.parseColor("#212121");
@@ -98,8 +98,6 @@ public class IDEHello extends Activity implements OnClickListener
 		{
 			if (need_rule)
 			    startActivity(new Intent(this, IDERule.class));
-			else
-				finish();
 			finish();
 		}
 	}
