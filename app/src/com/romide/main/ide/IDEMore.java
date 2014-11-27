@@ -113,7 +113,7 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 			startActivity(new Intent(this,IDEPortMethodManager.class));
 		}
 		else if(key.equals(mFileManagerKey)){
-			//startActivity(new Intent(this,lecho.lib.filechooser.FileChooserActivity.class));
+			startActivity(new Intent(this,com.romide.filemanager.FileExplorerMainActivity.class));
 		}
 		return false;
 	}

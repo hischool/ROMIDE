@@ -50,7 +50,7 @@
 	<string name="ide_title_portmethodmgr">移植管理</string>
 	<string name="ide_title_workspace">ROM 工作室</string>
 	<string name="ide_title_wkcreatenew">创建新的 ROM</string>
-	
+	<string name="ide_title_filemanager">文件管理器</string>
 	
 	
 	<string name="ide_splash_romes">为 ROM 而生</string>

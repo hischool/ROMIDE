@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package wei.mark.standout;
+package com.romide.filemanager;
 
 public final class R {
     public static final class anim {

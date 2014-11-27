@@ -6,7 +6,7 @@
 	<string name="hello_ui">UI</string>
 	<string name="hello_core">Core</string>
 	<string name="hello_service">Service</string>
-	<string name="next">下一步</string>
+	<string name="next">Next</string>
 	
 
 	<string name="format_data">Format data</string>
@@ -48,7 +48,9 @@
 	<string name="ide_title_portmethodmgr">Port Manager</string>
 	<string name="ide_title_workspace">ROM Workspace</string>
 	<string name="ide_title_wkcreatenew">Create New ROM</string>
-
+	<string name="ide_title_filemanager">File Manager</string>
+	
+	
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
 	<string name="ide_splash_romes">Bron to ROM</string>

@@ -230,51 +230,19 @@
 		<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
 
 
-        <activity
-            android:name="lecho.lib.filechooser.FileChooserActivity"
-            android:label="文件管理器"
-            android:theme="@android:style/Theme.Holo" >
-            <intent-filter>
+
+
+		<activity
+            android:label="@string/ide_title_filemanager"
+            android:name="com.romide.filemanager.FileExplorerMainActivity" >
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
 
 
-
-        
-
-
-
-        <activity android:name="com.myopicmobile.textwarrior.android.TextWarriorApplication"
-			android:windowSoftInputMode="stateUnchanged|adjustResize"
-			android:launchMode="singleTask" >
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" /> 
-			</intent-filter>
-
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<action android:name="android.intent.action.EDIT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="text/*"
-					android:scheme="file" />
-			</intent-filter>
-
-		</activity>
-
-		<activity android:name="com.myopicmobile.textwarrior.android.FilePicker">
-		</activity>
-
-		<activity android:name="com.myopicmobile.textwarrior.android.TextWarriorSettings"
-			android:label="编辑器设置">
-		</activity>
-
-		<activity android:name="com.myopicmobile.textwarrior.android.TextWarriorHelp"
-			android:label="帮助">
-		</activity>
-		
-		
+       
 		
 		
 		<activity

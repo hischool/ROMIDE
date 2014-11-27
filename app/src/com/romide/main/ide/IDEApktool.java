@@ -14,6 +14,7 @@ import java.io.*;
 import me.drakeet.materialdialog.*;
 
 import com.romide.main.R;
+import com.romide.filemanager.*;
 
 public class IDEApktool extends PreferenceActivity implements Preference.OnPreferenceClickListener
 {
@@ -92,7 +93,8 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		}
 		//b
 		else if (key.equals(mApktoolBApkKey)){
-			showChooser(Const.APKTOOL_B_APK);
+			//showChooser(Const.APKTOOL_B_APK);
+			startActivity(new Intent(this,FileExplorerMainActivity.class));
 		}
 		else if(key.equals(mApktoolDDexKey)){
 			showChooser(Const.APKTOOL_D_DEX);
