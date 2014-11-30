@@ -1197,6 +1197,17 @@ containing a value of this type.
         public static final int zip_remove_progress=0x7f06003b;
     }
     public static final class style {
+        /** 
+		Theme customizations available in newer API levels can go in
+		res/values-vXX/styles.xml, while customizations related to
+		backward-compatibility can go here.
+        
+         */
+        public static final int AppBaseTheme=0x7f0d0009;
+        /**  Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
+         */
+        public static final int AppTheme=0x7f0d000a;
         public static final int ChooserTheme=0x7f0d0006;
         public static final int Theme=0x7f0d0000;
         public static final int Theme_Holo=0x7f0d0001;

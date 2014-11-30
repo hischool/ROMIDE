@@ -40,13 +40,15 @@
 					android:hint="@string/base_file_path"
 					android:textColor="#FFFFFF"
 					android:maxLines="1"
-					android:id="@+id/base_file"/>
+					android:id="@+id/base_file"
+					android:textColorHint="#DFDCDB"/>
 
 				<Button
 					android:layout_height="wrap_content"
 					android:text="@string/browser_find"
 					android:layout_width="wrap_content"
-					android:id="@+id/find_base"/>
+					android:id="@+id/find_base"
+					android:textColor="#FFFFFF"/>
 
 			</LinearLayout>
 
@@ -64,13 +66,15 @@
 					android:hint="@string/sam_file_path"
 					android:textColor="#FFFFFF"
 					android:maxLines="1"
-					android:id="@+id/sam_file"/>
+					android:id="@+id/sam_file"
+					android:textColorHint="#DFDCDB"/>
 
 				<Button
 					android:layout_height="wrap_content"
 					android:text="@string/browser_find"
 					android:layout_width="wrap_content"
-					android:id="@+id/find_sam"/>
+					android:id="@+id/find_sam"
+					android:textColor="#FFFFFF"/>
 
 			</LinearLayout>
 
@@ -88,21 +92,21 @@
 					<RadioButton
 						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
-						android:textColor="#000000"
 						android:text="@string/cpu_mtk"
-						android:id="@+id/cpu_mtk"/>
+						android:id="@+id/cpu_mtk"
+						android:textColor="#FFFFFF"/>
 
 					<RadioButton
 						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
-						android:textColor="#000000"
+						android:textColor="#FFFFFF"
 						android:text="@string/cpu_gt"
 						android:id="@+id/cpu_gt"/>
 
 					<RadioButton
 						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
-						android:textColor="#000000"
+						android:textColor="#FFFFFF"
 						android:text="@string/cpu_sc"
 						android:id="@+id/cpu_sc"/>
 
@@ -132,7 +136,8 @@
 				android:layout_height="wrap_content"
 				android:text="@string/port_start"
 				android:layout_width="match_parent"
-				android:id="@+id/start"/>
+				android:id="@+id/start"
+				android:textColor="#FFFFFF"/>
 
 		</LinearLayout>
 

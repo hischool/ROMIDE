@@ -45,6 +45,9 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	public static final int SHOW = 0;
 	public static final int CHECK_UPDATE = 1;
 
+	
+	public static boolean isUpdated = false;
+	
 	private Settings set;
 	private SharedPreferences sp;
 
@@ -82,9 +85,9 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.ide_main);
 
-
 		init();
 		doInitSystem();
+		//checkInstall();
 
 		startService(new Intent(this, IDEService.class));
 
@@ -160,6 +163,15 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 
 
 
+	public void deleteDir(File dir){
+		for(File f : dir.listFiles()){
+			if(f.isDirectory()) {
+				deleteDir(f);
+				f.delete();
+			}
+			else f.delete();
+		}
+	}
 
 	//检测环境
 	private void checkInstall()
@@ -187,6 +199,10 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			}
 			File dataDir = this.getFilesDir();
 			File dr = new File(dataDir, "ROM-IDE");
+			if(isUpdated) {
+				deleteDir(dr);
+				dr.delete();
+			}
 			if (!dr.exists())
 			{
 				dr.mkdirs();
@@ -294,6 +310,8 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 				String lan = sp.getString("VersionName",getResources().getString(R.string.unknown));
 				if (now > la)
 				{
+					isUpdated = true;
+					checkInstall();
 					sp.edit().putInt("VersionCode", now).commit();
 					sp.edit().putString("VersionName",nown).commit();
 					AlertDialog.Builder d = new AlertDialog.Builder(this);

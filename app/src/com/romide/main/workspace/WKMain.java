@@ -61,6 +61,8 @@ public class WKMain extends BaseActivity
 
 
 
+	public String HAS_OPEN = "0";
+	public String NOT_OPEN = "1";
 	private void init()
 	{
 		rom = new ROM();
@@ -81,7 +83,7 @@ public class WKMain extends BaseActivity
 		{
 			HOMEDIR.mkdirs();
 		}
-		if (!SCRIPTDIR.exists())
+		if (!SCRIPTDIR.exists() || IDEMain.isUpdated)
 		{
 			SCRIPTDIR.mkdirs();
 			File busybox = new File(this.getFilesDir().getAbsolutePath() + File.separator + "busybox");
@@ -100,7 +102,7 @@ public class WKMain extends BaseActivity
 			File zip = new File(CopyFile(this, "mkrom.zip"));
 			try
 			{
-				Runtime.getRuntime().exec(busybox.getAbsolutePath() + " unzip " + zip.getAbsolutePath() + " -d " + SCRIPTDIR.getAbsolutePath()).waitFor();
+				Runtime.getRuntime().exec(busybox.getAbsolutePath() + " unzip -o " + zip.getAbsolutePath() + " -d " + SCRIPTDIR.getAbsolutePath()).waitFor();
 			}
 			catch (Exception e)
 			{
@@ -112,22 +114,19 @@ public class WKMain extends BaseActivity
 		if (opening_work_profile == null || opening_work_profile.equals(""))
 		{
 			//无打开工程
-			opening.setText("当前无打开工程\n赶快新建或打开一个吧");
+			setCurrentWork(null);
 		}
 		else
 		{
 			//文件不存在
 			if (!new File(opening_work_profile).exists())
 			{
-				opening.setText("当前无打开工程\n赶快新建或打开一个吧");
 				setCurrentWork(null);
 			}
 			//存在
 			else
 			{
-				rom.setProfile(opening_work_profile);
-				rom.initFromProfile();
-				opening.setText("当前所在工程:\n"+rom.getName());
+				setCurrentWork(opening_work_profile);
 			}
 		}
 
@@ -157,13 +156,72 @@ public class WKMain extends BaseActivity
 		{
 			// TODO: Implement this method
 			String key = list.get(position).get(TEXT_KEY).toString();
-			if (key.equals(CREATE_NEW)) doCreateNew();
-
+			if (key.equals(CREATE_NEW)) 
+				doCreateNew();
+			else
+			{
+				//无打开工程
+				if(opening.getTag().equals(NOT_OPEN)){
+					dialog(WKMain.this,getString(R.string.error),"无打开工程！无法进行操作");
+					return;
+				}
+				if (key.equals(EXPORT_ROM)) doExportRom();
+			}
 		}
 
 
 	}
 
+
+	private void doExportRom()
+	{
+		final File file = new File(rom.getOutputZip());
+		if (file.exists())
+		{
+			new AlertDialog.Builder(this)
+			    .setTitle(R.string.warning)
+				.setMessage("输出文件(" + file.getAbsolutePath() + ")已存在\n是否覆盖？")
+				.setNegativeButton(R.string.no, null)
+				.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface p1, int p2)
+					{
+						file.delete();
+						createZip();
+					}
+				})
+				.show();
+		}
+		else
+		{
+			createZip();
+		}
+	}
+
+	private void createZip()
+	{
+		final ProgressDialog d = new ProgressDialog(WKMain.this);
+		d.setCancelable(false);
+		d.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		d.setMessage("正在生成 ROM");
+		d.show();
+		this.runOnUiThread(new Runnable(){
+
+				@Override
+				public void run()
+				{
+					try
+					{
+						rom.createZip();
+						d.dismiss();
+						WKMain.this.dialog(WKMain.this, "恭喜", "生成成功！\n文件:" + rom.getOutputZip());
+					}
+					catch (Exception e)
+					{}
+				}
+			});
+	}
 
 	private void doCreateNew()
 	{
@@ -270,25 +328,34 @@ public class WKMain extends BaseActivity
 		if (requestCode == Const.WK_CREATE_NEW)
 		{
 		    if (debug) Toast.makeText(this, path, 0).show();
-			rom.setProfile(path);
-			rom.initFromProfile();
-			opening.setText("当前所在工程:\n"+rom.getName());
 			setCurrentWork(path);
 		}
 	}
 
+	
+	
 
 	public void setCurrentWork(String profileName)
 	{
 		sp.edit().putString("opening", profileName).commit();
+		if(profileName == null){
+			opening.setText("当前无打开工程\n赶快新建或打开一个吧");
+			opening.setTag(NOT_OPEN);
+		}
+		else {
+			rom.setProfile(profileName);
+			rom.initFromProfile();
+			opening.setTag(HAS_OPEN);
+			opening.setText("当前所在工程:\n" + rom.getName());
+		}
 	}
 
 	public String getCurrentWork()
 	{
 		return sp.getString("opening", null);
 	}
-	
-	
+
+
 
 }
 

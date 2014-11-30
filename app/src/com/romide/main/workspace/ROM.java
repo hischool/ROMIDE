@@ -1,9 +1,12 @@
 package com.romide.main.workspace;
 import com.romide.main.ide.*;
 import java.io.*;
-import java.util.zip.*;
 import java.util.*;
 import android.util.*;
+import net.lingala.zip4j.core.*;
+import net.lingala.zip4j.model.*;
+import net.lingala.zip4j.util.*;
+import android.sax.*;
 
 
 public class ROM extends Object
@@ -239,99 +242,47 @@ public class ROM extends Object
 			this.setRomdir(file.getAbsolutePath());
 		}
 	}
+	
+	public String getOutputZip(){
+		return (this.getWorkspace() + "/" + this.getName() + "-" + this.getVersion() + ".zip");
+	}
 
 
 	public void createZip() throws Exception
 	{
-		this.fix();
-		this.createZip(this.getWorkspace() + "/" + this.getName() + "-" + this.getVersion() + ".zip", null);
+		this.createZip(this.getOutputZip());
 	}
 
-	public void createZip(String output, OnZipAddListener listener) throws Exception
+	public void createZip(String output) throws Exception
 	{
 		this.fix();
-		ZipCompressing z = new ZipCompressing();
-		if (listener != null)
-		    listener.onStart();
-		z.zip(output, new File(this.getRomdir()), listener);
-		if (listener != null)
-		    listener.onFinish();
-	}
-
-
-
-
-}
-
-
-
-interface OnZipAddListener
-{
-	void onStart();
-	void onAdd(String name);
-	void onFinish();
-}
-
-
-
-
-class ZipCompressing
-{
-	private int k = 1; // 定义递归次数变量
-
-	public ZipCompressing()
-	{
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public void zip(String zipFileName, File inputFile, OnZipAddListener listener) throws Exception
-	{
-		System.out.println("压缩中...");
-		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(
-													  zipFileName));
-		BufferedOutputStream bo = new BufferedOutputStream(out);
-		zip(out, inputFile, inputFile.getName(), bo, listener);
-		bo.close();
-		out.close(); // 输出流关闭
-		System.out.println("压缩完成");
-	}
-
-	public void zip(ZipOutputStream out, File f, String base,
-					BufferedOutputStream bo, OnZipAddListener listener) throws Exception
-	{ // 方法重载
-		if (f.isDirectory())
-		{
-			File[] fl = f.listFiles();
-			if (fl.length == 0)
-			{
-				out.putNextEntry(new ZipEntry(base + "/")); // 创建zip压缩进入点base
-				System.out.println(base + "/");
-			}
-			for (int i = 0; i < fl.length; i++)
-			{
-				zip(out, fl[i], base + "/" + fl[i].getName(), bo, listener); // 递归遍历子文件夹
-			}
-			System.out.println("第" + k + "次递归");
-			k++;
-		}
-		else
-		{
-			if (listener != null)
-			    listener.onAdd(base);
-			out.putNextEntry(new ZipEntry(base)); // 创建zip压缩进入点base
-			System.out.println(base);
-			FileInputStream in = new FileInputStream(f);
-			BufferedInputStream bi = new BufferedInputStream(in);
-			int b;
-			while ((b = bi.read()) != -1)
-			{
-				bo.write(b); // 将字节流写入当前zip目录
-			}
-			bi.close();
-			in.close(); // 输入流关闭
+		ZipFile zipFile = new ZipFile(output);
+		
+		ZipParameters para = new ZipParameters();
+		para.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+		para.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
+		
+		for(File file : new File(this.getRomdir()).listFiles()){
+			if(file.isFile())
+				zipFile.addFile(file,para);
+			else if(file.isDirectory())
+				zipFile.addFolder(file,para);
 		}
 	}
-}
+	
+	
+	private ArrayList<File> addToArchive(ArrayList<File> list,File root){
+		for(File file: root.listFiles()){
+			if(file.isDirectory())
+				list = addToArchive(list,new File(root,file.getName()));
+			else
+				list.add(file);
+		}
+		return list;
+	}
 
+
+
+
+}
 

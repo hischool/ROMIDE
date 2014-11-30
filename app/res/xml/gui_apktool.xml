@@ -26,7 +26,17 @@
 			android:title="回编译 Dex"
 			android:key="apktool_b_dex"/>
 		
-		
+
+		<Preference
+			android:padding="10dp"
+			android:title="Dex2Jar"
+			android:key="d2j"/>
+
+
+		<Preference
+			android:padding="10dp"
+			android:title="Jar2Dex"
+			android:key="j2d"/>
 		
 		<Preference
 			android:padding="10dp"
@@ -37,7 +47,7 @@
 			android:padding="10dp"
 			android:title="解密 Apk/Zip"
 			android:key="unlock_rom"/>
-		
+	
 		
 	</PreferenceCategory>
 	

@@ -46,7 +46,11 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 	private Preference mUnlockRom;
 	private String mUnlockRomKey = "unlock_rom";
 
+	private Preference mD2j ;
+	private String mD2jKey = "d2j";
 	
+	private Preference mJ2d ;
+	private String mJ2dKey = "j2d";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -79,6 +83,12 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		
 		mUnlockRom = findPreference(mUnlockRomKey);
 		mUnlockRom.setOnPreferenceClickListener(this);
+		
+		mD2j = findPreference(mD2jKey);
+		mD2j.setOnPreferenceClickListener(this);
+		
+		mJ2d = findPreference(mJ2dKey);
+		mJ2d.setOnPreferenceClickListener(this);
 	}
 	
 	
@@ -108,7 +118,13 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		else if(key.equals(mUnlockRomKey)){
 			showChooser(Const.UNLOCK_ROM);
 		}
-		return false;
+		else if(key.equals(mD2jKey)){
+			showChooser(Const.DEX2JAR);
+		}
+		else if(key.equals(mJ2dKey)){
+			showChooser(Const.JAR2DEX);
+		}
+		return true;
 	}
 	
 	private void showChooser(int code)
@@ -186,24 +202,24 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 
 		}
 		//回编译 apk
-		else if(requestCode == Const.APKTOOL_B_APK){
-			final String file = new File(path).getParent();
-			final MaterialDialog d = new MaterialDialog(this);
-			    d.setTitle("回编译 Apk");
-				d.setMessage("将要回编译Apk:\n"+file);
-				d.setPositiveButton("确定", new View.OnClickListener(){
-
-					@Override
-					public void onClick(View v)
-					{
-						// TODO: Implement this method
-						doApktoolB(file);
-						d.dismiss();
-					}
-				});
-				d.setNegativeButton("取消",null);
-				d.show();
-		}
+//		else if(requestCode == Const.APKTOOL_B_APK){
+//			final String file = new File(path).getParent();
+//			final MaterialDialog d = new MaterialDialog(this);
+//			    d.setTitle("回编译 Apk");
+//				d.setMessage("将要回编译Apk:\n"+file);
+//				d.setPositiveButton("确定", new View.OnClickListener(){
+//
+//					@Override
+//					public void onClick(View v)
+//					{
+//						// TODO: Implement this method
+//						doApktoolB(file);
+//						d.dismiss();
+//					}
+//				});
+//				d.setNegativeButton("取消",null);
+//				d.show();
+//		}
 		//反编译 dex
 		else if(requestCode == Const.APKTOOL_D_DEX){
 			final String file = path;
@@ -282,17 +298,65 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 				d.setNegativeButton("取消",null);
 				d.show();
 		}
+		//dex2jar
+		else if(requestCode == Const.DEX2JAR){
+			final String file = path;
+			final MaterialDialog d = new MaterialDialog(this);
+			d.setTitle("Dex2jar");
+			d.setMessage("将要Dex2jar:\n"+file);
+			d.setPositiveButton("确定", new View.OnClickListener(){
+
+					@Override
+					public void onClick(View v)
+					{
+						// TODO: Implement this method
+						doDex2jar(file);
+						d.dismiss();
+					}
+				});
+			d.setNegativeButton("取消",null);
+			d.show();
+
+		}
+		//jar2dex
+		else if(requestCode == Const.DEX2JAR){
+			final String file = path;
+			final MaterialDialog d = new MaterialDialog(this);
+			d.setTitle("Jar2dex");
+			d.setMessage("将要Jar2dex:\n"+file);
+			d.setPositiveButton("确定", new View.OnClickListener(){
+
+					@Override
+					public void onClick(View v)
+					{
+						// TODO: Implement this method
+						doJar2dex(file);
+						d.dismiss();
+					}
+				});
+			d.setNegativeButton("取消",null);
+			d.show();
+
+		}
 	}
 	
+	
+	private void doDex2jar(String file){
+		runIDE("正在Dex2jar:"+file, "d2j "+file);
+	}
+	
+	private void doJar2dex(String file){
+		runIDE("正在Jar2dex:"+file, "j2d "+file);
+	}
 	
 	private void doApktoolD(String file){
 		runIDE("正在反编译 Apk:"+file, "decode_apk "+file);
 	}
 
-	private void doApktoolB(String file){
-		runIDE("正在回编译 Apk:"+file, "build_apk "+file);
-	}
-
+//	private void doApktoolB(String file){
+//		runIDE("正在回编译 Apk:"+file, "build_apk "+file);
+//	}
+//
 	private void doApktoolDDex(String file){
 		runIDE("正在反编译 Dex:"+file, "decode_dex "+file);
 	}
