@@ -377,7 +377,7 @@ public class IDEGui extends PreferenceActivity implements Preference.OnPreferenc
 		//runIDE("正在启动...","open_kitchen");
 		String cmd = this.getFilesDir().getAbsolutePath()+ File.separator + "romide" + " open_kitchen";
 		Intent intent = new Intent(Intent.ACTION_MAIN); 
-		intent.setComponent(new ComponentName("jackpal.androidterm", "jackpal.androidterm.RemoteInterface")); 
+		intent.setComponent(new ComponentName("com.romide.terminal", "com.romide.terminal.RemoteInterface")); 
 		intent.setAction("jackpal.androidterm.RUN_SCRIPT"); 
 		intent.putExtra("jackpal.androidterm.iInitialCommand", cmd);
 

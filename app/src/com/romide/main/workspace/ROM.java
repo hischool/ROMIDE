@@ -25,13 +25,25 @@ public class ROM extends Object
 	private String romdir;
 	//配置文件
 	private String profile;
+	//临时目录
+	private String tmpDir;
 
 	public ROM()
 	{
 
 	}
 
-	public void setProfile(String profile)
+	private void setTmpDir(String tmpDir)
+	{
+		this.tmpDir = tmpDir;
+	}
+
+	public String getTmpDir()
+	{
+		return tmpDir;
+	}
+
+	private void setProfile(String profile)
 	{
 		this.profile = profile;
 	}
@@ -96,6 +108,27 @@ public class ROM extends Object
 	{
 		return another;
 	}
+	
+	public String getBuildPropPath(){
+		return this.getTmpDir() + File.separator + "build.prop";
+	}
+	
+	public static List<String> getAllProjects(){
+		List<String> list = new ArrayList<String>();
+		File file = new File(HOME);
+		
+		for(File f : file.listFiles()){
+			if(f.isDirectory()){
+				//第一个字符是 . 表示隐藏文件
+				if(f.getName().indexOf(".") == 0){
+					continue;
+				}
+				list.add(f.getName());
+			}
+		}
+		
+		return list;
+	}
 
 
 
@@ -122,6 +155,7 @@ public class ROM extends Object
 	public static final String KEY_PROFILE = "KEY_4";
 	public static final String KEY_WORKSPACE = "KEY_5";
 	public static final String KEY_ROMDIR = "KEY_6";
+	public static final String KEY_TMPDIR = "KEY_7";
 
 	public void createProject(String name, String another, String version)
 	{
@@ -129,9 +163,11 @@ public class ROM extends Object
 		File myHome = new File(HOME, this.getName());
 		File romHome = new File(myHome, new File(this.getRomdir()).getName());
 		File scriptDir = new File(romHome, "META-INF/com/google/android");
+		File tmpDir = new File(this.getTmpDir());
 		if (!myHome.exists()) myHome.mkdirs();
 		if (!romHome.exists()) romHome.mkdirs();
 		if (!scriptDir.exists()) scriptDir.mkdirs();
+		if (!tmpDir.exists()) tmpDir.mkdirs();
 
 		this.fix();
 		//生成配置信息
@@ -155,6 +191,7 @@ public class ROM extends Object
 			this.setVersion(prop.getProperty(KEY_VERSION));
 			this.setProfile(prop.getProperty(KEY_PROFILE));
 			this.setWorkspace(prop.getProperty(KEY_WORKSPACE));
+			this.setTmpDir(prop.getProperty(KEY_TMPDIR));
 			this.setRomdir(prop.getProperty(KEY_ROMDIR));
 		}
 		catch (Exception e)
@@ -184,6 +221,7 @@ public class ROM extends Object
 			prop.setProperty(KEY_PROFILE, this.getProfile());
 			prop.setProperty(KEY_WORKSPACE, this.getWorkspace());
 			prop.setProperty(KEY_ROMDIR, this.getRomdir());
+			prop.setProperty(KEY_TMPDIR,this.getTmpDir());
 			prop.store(new FileOutputStream(file), "Created Time:" + String.valueOf(System.currentTimeMillis()));
 		}
 		catch (Exception e)
@@ -220,6 +258,12 @@ public class ROM extends Object
 			File file = new File(HOME + File.separator + this.getName());
 			if (!file.exists()) file.mkdirs();
 			this.setWorkspace(file.getAbsolutePath());
+		}
+		if (isEmpty(this.getTmpDir()))
+		{
+			File file = new File(this.getWorkspace(),".temp");
+			if (!file.exists()) file.mkdirs();
+			this.setTmpDir(file.getAbsolutePath());
 		}
 		if (isEmpty(this.getProfile()))
 		{
@@ -271,15 +315,15 @@ public class ROM extends Object
 	}
 	
 	
-	private ArrayList<File> addToArchive(ArrayList<File> list,File root){
-		for(File file: root.listFiles()){
-			if(file.isDirectory())
-				list = addToArchive(list,new File(root,file.getName()));
-			else
-				list.add(file);
-		}
-		return list;
-	}
+//	private ArrayList<File> addToArchive(ArrayList<File> list,File root){
+//		for(File file: root.listFiles()){
+//			if(file.isDirectory())
+//				list = addToArchive(list,new File(root,file.getName()));
+//			else
+//				list.add(file);
+//		}
+//		return list;
+//	}
 
 
 

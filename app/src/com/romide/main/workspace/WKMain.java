@@ -22,6 +22,7 @@ public class WKMain extends BaseActivity
 
 	private static final String CREATE_NEW = "创建新的 ROM";
 	private static final String EXPORT_ROM = "生成刷机包";
+	private static final String CHOOSE_ROM = "切换 ROM 项目";
 
 	public static final File HOMEDIR = new File(ROM.HOME);
 	public static final File SCRIPTDIR = new File(ROM.HOME, ".mkrom");
@@ -32,6 +33,7 @@ public class WKMain extends BaseActivity
 	private static final String[] text = {
 		CREATE_NEW,
 		EXPORT_ROM,
+		CHOOSE_ROM,
 	};
 	private static final int[] icon = {
 		R.drawable.wk_create_new,
@@ -158,6 +160,8 @@ public class WKMain extends BaseActivity
 			String key = list.get(position).get(TEXT_KEY).toString();
 			if (key.equals(CREATE_NEW)) 
 				doCreateNew();
+			else if (key.equals(CHOOSE_ROM))
+				doChooseRom();
 			else
 			{
 				//无打开工程
@@ -165,14 +169,37 @@ public class WKMain extends BaseActivity
 					dialog(WKMain.this,getString(R.string.error),"无打开工程！无法进行操作");
 					return;
 				}
+				//有工程，可以操作
 				if (key.equals(EXPORT_ROM)) doExportRom();
 			}
 		}
 
-
 	}
 
+	private void doChooseRom()
+	{
+		List<String> list = ROM.getAllProjects();
+		//String[] array = new String[list.size()];
+		
+		final String[] items = list.toArray(new String[list.size()]);
+		
+		AlertDialog.Builder dialog = new AlertDialog.Builder(WKMain.this);
+		dialog.setTitle("选择将要打开的项目");
+		dialog.setNegativeButton(android.R.string.no,null);
+		dialog.setItems(items, new DialogInterface.OnClickListener(){
 
+				@Override
+				public void onClick(DialogInterface p1, int p2)
+				{
+					// TODO: Implement this method
+					String profile = ROM.HOME + File.separator + items[p2] + File.separatorChar +".profile";
+					
+					setCurrentWork(profile);
+				}
+			});
+		dialog.show();
+	}
+	
 	private void doExportRom()
 	{
 		final File file = new File(rom.getOutputZip());
@@ -199,6 +226,24 @@ public class WKMain extends BaseActivity
 		}
 	}
 
+	private int ZIP_FINISH = 0;
+	Handler zipHandler = new Handler(){
+
+		@Override
+		public void handleMessage(Message msg)
+		{
+			// TODO: Implement this method
+			super.handleMessage(msg);
+			Bundle bundle = msg.getData();
+			int what = msg.what;
+			if(what == ZIP_FINISH){
+				String title = bundle.getString("title");
+				String message = bundle.getString("message");
+				WKMain.this.dialog(WKMain.this, title,message);
+			}
+		}
+		
+	};
 	private void createZip()
 	{
 		final ProgressDialog d = new ProgressDialog(WKMain.this);
@@ -206,21 +251,27 @@ public class WKMain extends BaseActivity
 		d.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		d.setMessage("正在生成 ROM");
 		d.show();
-		this.runOnUiThread(new Runnable(){
-
-				@Override
-				public void run()
+		
+		new Thread(){
+			public void run(){
+				try
 				{
-					try
-					{
-						rom.createZip();
-						d.dismiss();
-						WKMain.this.dialog(WKMain.this, "恭喜", "生成成功！\n文件:" + rom.getOutputZip());
-					}
-					catch (Exception e)
-					{}
+					rom.createZip();
+					Bundle bundle = new Bundle();
+					bundle.putString("title","恭喜");
+					bundle.putString("message","创建完成:"+rom.getOutputZip());
+					Message msg = new Message();
+					msg.what = ZIP_FINISH;
+					msg.setData(bundle);
+					zipHandler.sendMessage(msg);
 				}
-			});
+				catch (Exception e)
+				{}
+				finally{
+					d.dismiss();
+				}
+			}
+		}.start();
 	}
 
 	private void doCreateNew()
@@ -235,6 +286,13 @@ public class WKMain extends BaseActivity
 				public void onClick(DialogInterface p1, int p2)
 				{
 					// TODO: Implement this method
+					int i = 1;
+					File result_File = new File(ROM.HOME,"MyROM");
+					while(result_File.exists()){
+						result_File = new File(ROM.HOME,"MyROM_"+i);
+						i++;
+					}
+					
 					final EditText name = (EditText) v.findViewById(R.id.wk_dialog_create_new_name);
 					final EditText another = (EditText) v.findViewById(R.id.wk_dialog_create_new_another);
 					final EditText version = (EditText) v.findViewById(R.id.wk_dialog_create_new_version);
@@ -242,7 +300,7 @@ public class WKMain extends BaseActivity
 					String sanother = another.getText().toString();
 					String sversion = version.getText().toString();
 
-					sname = sname.equals("") ? "MyROM" : sname;
+					sname = sname.equals("") ? result_File.getName() : sname;
 					sanother = sanother.equals("") ? "ROM-IDE" : sanother;
 					sversion = sversion.equals("") ? "1.0" : sversion;
 
@@ -343,8 +401,8 @@ public class WKMain extends BaseActivity
 			opening.setTag(NOT_OPEN);
 		}
 		else {
-			rom.setProfile(profileName);
-			rom.initFromProfile();
+			
+			rom.initFromProfile(profileName);
 			opening.setTag(HAS_OPEN);
 			opening.setText("当前所在工程:\n" + rom.getName());
 		}
