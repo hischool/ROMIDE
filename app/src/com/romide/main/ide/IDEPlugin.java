@@ -34,7 +34,7 @@ public class IDEPlugin extends BaseActivity implements OnItemSelectedListener,On
 	private int pos = 0;
 	private int posinsd = 0;
 
-	private String insdList = IDEGui.sdcard + "ROM-IDE/tools/config/pluginmgr/plglist.lst"; 
+	private String insdList = IDEGui.sdcard + "ROM-IDE/tools/config/etc/pluginmgr/plglist.lst"; 
 
 
 	private String dir = IDEGui.sdcard + "ROM-IDE";

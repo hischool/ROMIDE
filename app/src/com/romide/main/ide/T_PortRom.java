@@ -7,173 +7,128 @@ import android.os.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
-import android.widget.*;
 import com.ipaulpro.afilechooser.utils.*;
 import com.romide.main.*;
-import com.romide.main.ide.utils.*;
-//import de.keyboardsurfer.android.widget.crouton.*;
-import java.io.*;
-import me.drakeet.materialdialog.*;
-
-import com.romide.main.R;
 import com.romide.plugin.widget.crouton.*;
+import java.io.*;
+import android.support.v4.view.*;
+import java.util.*;
+import android.widget.*;
 
 
-public class T_PortRom extends BaseActivity implements View.OnClickListener
+public class T_PortRom extends Activity implements View.OnClickListener
 {
+	private ViewPager pager;
+	private PagerTabStrip titleStrip;
+	private ArrayList<View> views;
+	private ArrayList<String> titles;
 
-	private EditText base_file;
-	private EditText sam_file;
-	private Button find_base;
-	private Button find_sam;
+	private EditText output;
+
+	private EditText basefile;
+	private EditText samfile;
+	private Button findbase;
+	private Button findsam;
+	private Button findpm;
 	private Button start;
-	private RadioButton mtk;
-	private RadioButton gt;
-	private RadioButton sc;
+	private RadioButton cpu_mtk;
+	private RadioButton cpu_gt;
+	private RadioButton cpu_sc;
 
-	private String sdcard = Environment.getExternalStorageDirectory().toString() + "/";
-	private String script; //脚本
-	private String ideDir; //脚本所在目录
-	private String inDataBootOut; //boot输出目录
-	//是否有后台任务
-	private boolean hasPerm = false;
 
-	private String cpu;
-	private Command com;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
+	protected void onCreate(Bundle savedInstanceState)
 	{
-		// TODO: Implement this method
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.port_layout);
-		
-		try{
-			cpu = getIntent().getStringExtra("cpu");
-			init();
+		setContentView(R.layout.ide_port_rom);
 
-			if(cpu.equals(Const.CPU_MTK)){
-				mtk.setChecked(true);
-			}
-			else if(cpu.equals(Const.CPU_GT)){
-				gt.setChecked(true);
-			}
-			else if(cpu.equals(Const.CPU_SC)){
-				sc.setChecked(true);
-			}
-		} catch (Exception e){
-			//dialog(e.getMessage());
-		}
+		initViews();
 	}
 
-	private void init()
+	void initViews()
 	{
-		// TODO: Implement this method
-		base_file = (EditText) findViewById(R.id.base_file);
-		sam_file = (EditText) findViewById(R.id.sam_file);
-
-		find_sam = (Button) findViewById(R.id.find_sam);
-		find_sam.setOnClickListener(this);
-		find_base = (Button) findViewById(R.id.find_base);
-		find_base.setOnClickListener(this);
-		start = (Button) findViewById(R.id.start);
-		start.setOnClickListener(this);
-
-		mtk = (RadioButton) findViewById(R.id.cpu_mtk);
-		gt = (RadioButton) findViewById(R.id.cpu_gt);
-		sc = (RadioButton) findViewById(R.id.cpu_sc);
-		
-		//默认选中MTK
-		mtk.setChecked(true);
-
-		com = new Command("/system/bin/bash", "/system/bin/busybox", true);
-		ideDir = this.getDataFilesDir(T_PortRom.this);
-		script = ideDir + "romide";
-		inDataBootOut = ideDir + "work/boot";
-		
-		Actionbar();
-	}
-
-	private void Actionbar()
-	{
-		ActionBarCompat bar = ActivityCompat.getActionBar(this);
-		if (bar != null)
+		try
 		{
-			bar.setDisplayOptions(ActionBarCompat.DISPLAY_HOME_AS_UP,ActionBarCompat.DISPLAY_HOME_AS_UP);
-		}
-	}
+			views = new ArrayList<View>();
+			titles = new ArrayList<String>();
+			
+			pager = (ViewPager) findViewById(R.id.portrom_viewpager);
+			titleStrip = (PagerTabStrip) findViewById(R.id.portrom_pagertitle);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		// TODO: Implement this method
-		int id = item.getItemId();
-		switch(id){
-			case ActionBarCompat.ID_HOME:
-				finish();
-				return true;
+			View choose = getLayoutInflater().inflate(R.layout.ide_port_rom_choosefile, null);
+			View running = getLayoutInflater().inflate(R.layout.ide_port_rom_running, null);
+
+			views.add(choose);
+			views.add(running);
+			
+			titles.add(getString(R.string.portrom_choosefile));
+			titles.add(getString(R.string.portrom_running));
+
+			MyPagerAdapter adapter = new MyPagerAdapter();
+			pager.setAdapter(adapter);
 		}
-		return super.onOptionsItemSelected(item);
+		catch (Exception e)
+		{
+			new AlertDialog.Builder(this).setMessage(e.toString()).show();
+		}
 	}
-	
 
 	@Override
 	public void onClick(View p1)
 	{
 		// TODO: Implement this method
-		int id = p1.getId();
-		switch(id){
-			case R.id.find_base:
-				showChooser(Const.CHOOSE_BASE);
-				break;
-			case R.id.find_sam:
-				showChooser(Const.CHOOSE_SAM);
-				break;
-			case R.id.start:
-				doPort();
-				break;
+		if (p1 == titleStrip){
+			
 		}
 	}
 
 
-
-
-
-
-
-
-
-	public String getDataFilesDir(Context c)
+	class MyPagerAdapter extends PagerAdapter
 	{
-		return c.getFilesDir().getAbsolutePath() + File.separator;
-	}
-
-	public String getSdcardFilesDir(Context c)
-	{
-		return c.getExternalFilesDir(null).getAbsolutePath() + File.separator;
-	}
-
-	private void doPort()
-	{
-		// TODO: Implement this method
-		String now = "MTK";
-		if(mtk.isChecked()) now = "MTK";
-		else if(gt.isChecked()) now = "GT";
-		else if(sc.isChecked()) now = "SC";
-		String base = base_file.getText().toString();
-		String sam = sam_file.getText().toString();
-		if(base != null && sam != null && !base.equals("") && !sam.equals("")){
-		    runIDE("正在进行移植...","port_rom "+now+" "+base+" "+sam.toString());
-	    }
-		else{
-			doToast("您未正确选择文件！",RED,null);
+		@Override
+		public int getCount()
+		{
+			// TODO: Implement this method
+			return views.size();
 		}
+
+		@Override
+		public boolean isViewFromObject(View p1, Object p2)
+		{
+			// TODO: Implement this method
+			return p1 == p2;
+		}
+
+		@Override
+		public CharSequence getPageTitle(int position)
+		{
+			return titles.get(position);
+		}
+
+		@Override
+		public void destroyItem(View container, int position, Object object)
+		{
+			((ViewPager)container).removeView(views.get(position));
+		}
+
+		@Override
+		public Object instantiateItem(View container, int position)
+		{
+			((ViewPager)container).addView(views.get(position));
+			return views.get(position);
+		}
+
 	}
 
 
-	public boolean runIDE(String title,String command){
-		String script = this.getFilesDir().getAbsolutePath()+File.separator+"romide";
-		return Utils.runIDECommand(this,new AlertDialog.Builder(this),new ProgressDialog(this),script,title,command);
+
+
+
+	public boolean runIDE(String title, String command)
+	{
+		String script = this.getFilesDir().getAbsolutePath() + File.separator + "romide";
+		return Utils.runIDECommand(this, new AlertDialog.Builder(this), new ProgressDialog(this), script, title, command);
 	}
 
 	private static final Style RED = Style.ALERT;
@@ -205,8 +160,6 @@ public class T_PortRom extends BaseActivity implements View.OnClickListener
 	@Override
 	protected void onActivityResult(final int requestCode, int resultCode, Intent data)
 	{
-		// TODO: Implement this method
-		// If the file selection was successful
 		String path = null;
 		if (resultCode != RESULT_OK)
 		{
@@ -216,11 +169,9 @@ public class T_PortRom extends BaseActivity implements View.OnClickListener
 		{
 			return;
 		}
-		// Get the URI of the selected file
 		final Uri uri = data.getData();
 		try
 		{
-			// Get the file path from the URI
 			path = FileUtils.getPath(this, uri);
 		}
 		catch (Exception e)
@@ -232,14 +183,7 @@ public class T_PortRom extends BaseActivity implements View.OnClickListener
 			return;
 		}
 
-		if(requestCode == Const.CHOOSE_BASE){
-			base_file.setText(path);
-		}
-		else if(requestCode == Const.CHOOSE_SAM){
-			sam_file.setText(path);
-		}
 	}
 
 
-	
 }

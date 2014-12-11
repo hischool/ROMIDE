@@ -30,18 +30,9 @@ public class IDEPreference extends PreferenceActivity implements Preference.OnPr
 		if(key.equals(mGotoRomerzjComKey)){
 			openUrl("http://bbs.romerzj.com");
 		}
-		if(key.equals(mGotoRomFacKey)){
-			Intent intent = new Intent();
-			intent.setComponent(new ComponentName("com.rom","com.rom.factory.mainUI"));
-			intent.setAction(Intent.ACTION_VIEW);
-			try{
-			    startActivity(intent);
-			} catch (Exception e){
-				new AlertDialog.Builder(this)
-				   .setTitle("无法打开！")
-				   .setMessage("无法打开 ROM-Factory！您可能未安装或者将其禁用！\n\n错误:\n"+e.toString())
-				   .setPositiveButton("确定",null)
-				   .show();
+		if(key.equals(mJoinQQGroupKey)){
+			if(!joinQQGroup("IvEjvcEGgs50euRu-qTkto_LKFBybDiU")){
+				Toast.makeText(this,"未安装QQ或者版本太低，无法打开",Toast.LENGTH_SHORT).show();
 			}
 		}
 		return false;
@@ -61,6 +52,29 @@ public class IDEPreference extends PreferenceActivity implements Preference.OnPr
 			Toast.makeText(this, "未安装浏览器！无法打开", 0).show();
 		}
 	}
+	
+	
+	/****************
+	 *
+	 * 发起添加群流程。群号：ROM IDE(342742792) 的 key 为： IvEjvcEGgs50euRu-qTkto_LKFBybDiU
+	 * 调用 joinQQGroup(IvEjvcEGgs50euRu-qTkto_LKFBybDiU) 即可发起手Q客户端申请加群 ROM IDE(342742792)
+	 *
+	 * @param key 由官网生成的key
+	 * @return 返回true表示呼起手Q成功，返回fals表示呼起失败
+	 ******************/
+	public boolean joinQQGroup(String key) {
+		Intent intent = new Intent();
+		intent.setData(Uri.parse("mqqopensdkapi://bizAgent/qm/qr?url=http%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Ffrom%3Dapp%26p%3Dandroid%26k%3D" + key));
+		// 此Flag可根据具体产品需要自定义，如设置，则在加群界面按返回，返回手Q主界面，不设置，按返回会返回到呼起产品界面    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+		try {
+			startActivity(intent);
+			return true;
+		} catch (Exception e) {
+			// 未安装手Q或安装的版本不支持
+			return false;
+		}
+	}
+	
 
 	
 	private Preference mGotoAppHello;
@@ -73,8 +87,8 @@ public class IDEPreference extends PreferenceActivity implements Preference.OnPr
 	private String mGotoRomerzjComKey = "goto_romerzj_com";
 
 	
-	private Preference mGotoRomFac;
-	private String mGotoRomFacKey = "goto_rom_fac";
+	private Preference mJoinQQGroup;
+	private String mJoinQQGroupKey = "join_qq_group";
 	
 	
 	@Override
@@ -88,8 +102,8 @@ public class IDEPreference extends PreferenceActivity implements Preference.OnPr
 		mGotoAppHello = findPreference(mGotoAppHelloKey);
 		mGotoAppHello.setOnPreferenceClickListener(this);
 		
-		mGotoRomFac = findPreference(mGotoRomFacKey);
-		mGotoRomFac.setOnPreferenceClickListener(this);
+		mJoinQQGroup = findPreference(mJoinQQGroupKey);
+		mJoinQQGroup.setOnPreferenceClickListener(this);
 		
 		mGotoRomideCom = findPreference(mGotoRomideComKey);
 		mGotoRomideCom.setOnPreferenceClickListener(this);

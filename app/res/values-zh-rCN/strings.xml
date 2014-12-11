@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-	
-	
+	<string name="portrom_choosefile">移植准备</string>
+	<string name="portrom_running">移植动态</string>
+	<string name="pmfilepath">移植方案</string>
 	<string name="hello_ui">界面</string>
 	<string name="hello_core">核心</string>
 	<string name="hello_service">服务</string>

@@ -24,13 +24,6 @@
 			android:defaultValue="@bool/default_use_splash"
 			android:summary="是否在启动时显示动画"/>
 		
-		<CheckBoxPreference 
-			android:key="auto_check_update"
-			android:title="自动检测更新"
-			android:defaultValue="@bool/default_auto_check_update"
-			android:summary="是否在启动时检测更新"/>
-		
-		
 		<Preference 
 			android:key="goto_hello"
 			android:title="查看 ROM-IDE 简介"
@@ -43,9 +36,9 @@
 		android:title="支持">
 		
 		<Preference 
-			android:key="goto_rom_fac"
-			android:title="打开 ROM-Factory"
-			android:summary="ROM-IDE 的合作伙伴"/>
+			android:key="join_qq_group"
+			android:title="加入QQ群"
+			android:summary="使用中的问题和疑问在群中有热心人为你解答"/>
 		
 		<Preference 
 			android:key="goto_romide_com"

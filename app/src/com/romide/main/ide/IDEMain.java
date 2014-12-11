@@ -12,8 +12,6 @@ import android.widget.*;
 import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 import com.romide.main.workspace.*;
-import com.umeng.fb.*;
-import com.umeng.update.*;
 //import de.keyboardsurfer.android.widget.crouton.*;
 import java.io.*;
 import java.util.*;
@@ -38,7 +36,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		if (key.equals(WORKSPACE)) doWorkSpace();
 		if (key.equals(ABOUT)) doAbout();
 		if (key.equals(PLUGIN)) doPlugin();
-		if (key.equals(TELLME)) doTellme();
 		if (key.equals(SETTINGS)) doSettings();
 	}
 
@@ -51,8 +48,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	private Settings set;
 	private SharedPreferences sp;
 
-	private FeedbackAgent fb;
-
 	private GridView gv;
 	private SimpleAdapter sa;
 	private ArrayList<HashMap<String,Object>> list;
@@ -60,14 +55,13 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	private static final String ICON_KEY = "ICON";
 	private static final String TEXT_KEY = "TEXT";
 
-	private static String BASIC = "基础功能";
-	private static String MORE  = "高级功能";
-	private static String TEACH = "ROM 教程";
-	private static String WORKSPACE = "ROM 工作";
-	private static String ABOUT = "关于";
-	private static String PLUGIN = "插件管理";
-	private static String TELLME = "意见反馈";
-	private static String SETTINGS = "系统设置";
+	private String BASIC = "基础功能";
+	private String MORE  = "高级功能";
+	private String TEACH = "ROM 教程";
+	private String WORKSPACE = "ROM 工作";
+	private String ABOUT = "关于";
+	private String PLUGIN = "插件管理";
+	private String SETTINGS = "系统设置";
 
 
 
@@ -91,16 +85,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 
 		startService(new Intent(this, IDEService.class));
 
-		if (set.isAutoCheckUpdate())
-		{
-		    //doCheckUpdate();
-			UmengUpdateAgent.setUpdateOnlyWifi(false); 
-			UmengUpdateAgent.setDeltaUpdate(false);
-			UmengUpdateAgent.update(this);
-		}
-
-		fb = new FeedbackAgent(this);
-
 		//StandOutWindow.closeAll(this,IDEQuickWindow.class);
 		//StandOutWindow.show(this,IDEQuickWindow.class,StandOutWindow.DEFAULT_ID);
 	}
@@ -115,7 +99,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		WORKSPACE = r.getString(R.string.ide_title_workspace);
 		ABOUT = r.getString(R.string.ide_title_about);
 		PLUGIN = r.getString(R.string.ide_title_plugin);
-		TELLME = r.getString(R.string.tellme);
 		SETTINGS = r.getString(R.string.ide_title_preference);
 	    final int[] icon = {
 			R.drawable.main_basic,
@@ -124,7 +107,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			R.drawable.main_workspace,
 			R.drawable.main_install,
 			R.drawable.main_plugin,
-			R.drawable.main_tellme,
 			R.drawable.main_settings,
 		};
 	    final String[] text = {
@@ -134,7 +116,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			WORKSPACE,
 			ABOUT,
 			PLUGIN,
-			TELLME,
 			SETTINGS,
 		};
 
@@ -339,11 +320,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		doToast(getResources().getString(R.string.developing), GREEN, null);
 	}
 
-
-	private void doTellme()
-	{
-		fb.startFeedbackActivity();
-	}
 
 	private void doSettings()
 	{
