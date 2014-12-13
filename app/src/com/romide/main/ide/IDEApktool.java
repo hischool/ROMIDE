@@ -30,6 +30,8 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 	private Preference mApktoolBApk;
 	private String mApktoolBApkKey = "apktool_b_apk";
 
+	private Preference mApktoolIf;
+	private String mApktoolIfKey = "apktool_if";
 	
 	private Preference mApktoolDDex;
 	private String mApktoolDDexKey = "apktool_d_dex";
@@ -72,6 +74,9 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		mApktoolBApk = findPreference(mApktoolBApkKey);
 		mApktoolBApk.setOnPreferenceClickListener(this);
 
+		mApktoolIf = findPreference(mApktoolIfKey);
+		mApktoolIf.setOnPreferenceClickListener(this);
+		
 		mApktoolDDex = findPreference(mApktoolDDexKey);
 		mApktoolDDex.setOnPreferenceClickListener(this);
 		
@@ -123,6 +128,9 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		}
 		else if(key.equals(mJ2dKey)){
 			showChooser(Const.JAR2DEX);
+		}
+		else if(key.equals(mApktoolIfKey)){
+			showChooser(Const.APKTOOL_IF);
 		}
 		return true;
 	}
@@ -181,8 +189,28 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 		 判断操作类型
 		 */
 
+		//加载框架
+		if(requestCode == Const.APKTOOL_IF){
+			final String file = path;
+			final MaterialDialog d = new MaterialDialog(this);
+			d.setTitle("加载框架");
+			d.setMessage("加载:"+file+"\n");
+			d.setPositiveButton("确定", new View.OnClickListener(){
+
+					@Override
+					public void onClick(View p1)
+					{
+						// TODO: Implement this method
+						doApktoolIf(file);
+						d.dismiss();
+					}
+				});
+			d.setNegativeButton("取消",null);
+			d.show();
+		}
+		
 		// 反编译 apk
-		if(requestCode == Const.APKTOOL_D_APK){
+		else if(requestCode == Const.APKTOOL_D_APK){
 			final String file = path;
 			final MaterialDialog d = new MaterialDialog(this);
 			    d.setTitle("反编译 Apk");
@@ -356,7 +384,12 @@ public class IDEApktool extends PreferenceActivity implements Preference.OnPrefe
 //	private void doApktoolB(String file){
 //		runIDE("正在回编译 Apk:"+file, "build_apk "+file);
 //	}
-//
+	
+	private void doApktoolIf(String file){
+		runIDE("正在加载框架:"+file,"apktool if "+file);
+	}
+
+	
 	private void doApktoolDDex(String file){
 		runIDE("正在反编译 Dex:"+file, "decode_dex "+file);
 	}

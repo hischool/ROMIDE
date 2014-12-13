@@ -7,6 +7,11 @@
 		
 		<Preference
 			android:padding="10dp"
+			android:title="加载框架"
+			android:key="apktool_if"/>
+		
+		<Preference
+			android:padding="10dp"
 			android:title="反编译 Apk"
 			android:key="apktool_d_apk"/>
 

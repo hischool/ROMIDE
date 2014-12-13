@@ -21,6 +21,7 @@ import com.romide.main.R;
 import java.lang.Process;
 import com.romide.plugin.widget.crouton.*;
 import android.content.pm.*;
+import android.util.*;
 
 public class IDEMain extends BaseActivity implements AdapterView.OnItemClickListener
 {
@@ -34,7 +35,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		if (key.equals(MORE))  doMore();
 		if (key.equals(TEACH)) doTeach();
 		if (key.equals(WORKSPACE)) doWorkSpace();
-		if (key.equals(ABOUT)) doAbout();
 		if (key.equals(PLUGIN)) doPlugin();
 		if (key.equals(SETTINGS)) doSettings();
 	}
@@ -59,7 +59,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	private String MORE  = "高级功能";
 	private String TEACH = "ROM 教程";
 	private String WORKSPACE = "ROM 工作";
-	private String ABOUT = "关于";
 	private String PLUGIN = "插件管理";
 	private String SETTINGS = "系统设置";
 
@@ -97,7 +96,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 		MORE = r.getString(R.string.ide_title_more);
 		TEACH = r.getString(R.string.main_romteach);
 		WORKSPACE = r.getString(R.string.ide_title_workspace);
-		ABOUT = r.getString(R.string.ide_title_about);
 		PLUGIN = r.getString(R.string.ide_title_plugin);
 		SETTINGS = r.getString(R.string.ide_title_preference);
 	    final int[] icon = {
@@ -105,7 +103,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			R.drawable.main_more,
 			R.drawable.main_teach,
 			R.drawable.main_workspace,
-			R.drawable.main_install,
 			R.drawable.main_plugin,
 			R.drawable.main_settings,
 		};
@@ -114,7 +111,6 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			MORE,
 			TEACH,
 			WORKSPACE,
-			ABOUT,
 			PLUGIN,
 			SETTINGS,
 		};
@@ -145,12 +141,15 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 
 
 	public void deleteDir(File dir){
-		for(File f : dir.listFiles()){
-			if(f.isDirectory()) {
+		Log.e("IDEMain",dir.getAbsolutePath());
+		if(dir.isDirectory()){
+			for(File f : dir.listFiles()){
 				deleteDir(f);
-				f.delete();
 			}
-			else f.delete();
+			dir.delete();
+		}
+		else{
+			dir.delete();
 		}
 	}
 
@@ -186,6 +185,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 			}
 			if (!dr.exists())
 			{
+				Log.e("IDEMain","进入安装");
 				dr.mkdirs();
 				File work = new File(dr, "work");
 				File tools = new File(dr, "tools");
@@ -292,9 +292,10 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 				if (now > la)
 				{
 					isUpdated = true;
-					checkInstall();
+					//checkInstall();
 					sp.edit().putInt("VersionCode", now).commit();
 					sp.edit().putString("VersionName",nown).commit();
+					checkInstall();
 					AlertDialog.Builder d = new AlertDialog.Builder(this);
 					d.setTitle(R.string.update_success);
 					d.setMessage(getResources().getString(R.string.cur_version) + nown + "\n" + getResources().getString(R.string.last_version) + lan + "\n\n" + getResources().getString(R.string.update_log) + "\n" + getFromAssets(this, "change_log.txt"));
@@ -384,18 +385,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	}
 
 
-	public void doAbout()
-	{
-		Intent it = new Intent(IDEMain.this, com.romide.main.ide.IDEAbout.class);
-		try
-		{
-			startActivity(it);
-		}
-		catch (Exception e)
-		{
-			dialog(IDEMain.this, "异常信息", e.toString());
-		}
-	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)

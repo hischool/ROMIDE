@@ -24,6 +24,7 @@ public final class Const extends Activity
 	public static final int ODEX_APP                    = 1014;
 	public static final int DEX2JAR            			= 1015;
 	public static final int JAR2DEX 					= 1016;
+	public static final int APKTOOL_IF                  = 1017;
 	public static final int OTHER                       = 9999;
 	
 	public static final int WK_CREATE_NEW               = 8000;

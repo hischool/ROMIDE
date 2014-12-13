@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.romide.main"
-	android:versionName="0.10.1"
-	android:versionCode="102"
+	android:versionName="0.10.5"
+	android:versionCode="121"
 	android:installLocation="auto">
 
     <uses-sdk 
@@ -44,7 +44,7 @@
     <application 
 		android:icon="@drawable/ic_ide"
 		android:label="@string/application_ide"
-		android:theme="@android:style/Theme.Holo.Light"
+		android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
 		android:hardwareAccelerated="true">
 
 		<activity 
@@ -130,12 +130,6 @@
 		<activity 
 			android:name=".ide.IDEApktool"
 			android:label="@string/ide_title_apktool"
-			android:icon="@drawable/ic_ide">
-		</activity>
-
-		<activity 
-			android:name=".ide.IDEAbout"
-			android:label="@string/ide_title_about"
 			android:icon="@drawable/ic_ide">
 		</activity>
 
