@@ -9,7 +9,6 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import com.ipaulpro.afilechooser.utils.*;
-import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 import com.romide.plugin.widget.crouton.*;
 import java.io.*;

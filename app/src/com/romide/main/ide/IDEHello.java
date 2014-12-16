@@ -8,8 +8,6 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import at.markushi.ui.*;
-import com.romide.main.*;
-
 import com.romide.main.R;
 
 public class IDEHello extends Activity implements OnClickListener

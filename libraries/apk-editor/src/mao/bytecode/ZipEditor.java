@@ -181,7 +181,8 @@ public class ZipEditor extends ListActivity {
             mod=UNUSE;
             if(file.endsWith(".arsc")){
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(LOADING);
                         textEditArsc(file);
                         //dismissDialog 
@@ -190,7 +191,8 @@ public class ZipEditor extends ListActivity {
                 }).start();
             }else if(file.endsWith(".xml")){
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(LOADING);
                         textEditAxml(file);
                         //dismissDialog 
@@ -200,7 +202,8 @@ public class ZipEditor extends ListActivity {
 
             }else if(file.endsWith(".dex")){
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(LOADING);
                         openDexFile(file);
                         //dismissDialog 
@@ -210,7 +213,8 @@ public class ZipEditor extends ListActivity {
 
             } else if(isImageType(file)){
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(LOADING);
                         openImageFile(file);
                         //dismissDialog 
@@ -317,7 +321,8 @@ public class ZipEditor extends ListActivity {
         alert.setTitle(R.string.replace_axml);
         alert.setView(line);
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 final String src = srcName.getText().toString();
                 final String dst = dstName.getText().toString();
                 if (src.length() == 0) {
@@ -325,7 +330,8 @@ public class ZipEditor extends ListActivity {
                     return;
                 }
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(REPLACE);
                         int count=replaceAllAxml(src,dst);
                         if(count>0){
@@ -429,10 +435,11 @@ public class ZipEditor extends ListActivity {
 
     private void showDialog(){
         FileBrowser.prompt(this,getString(R.string.prompt),getString(R.string.is_save),new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dailog,int which){
-                if(which==AlertDialog.BUTTON_POSITIVE){
+            @Override
+			public void onClick(DialogInterface dailog,int which){
+                if(which==DialogInterface.BUTTON_POSITIVE){
                     saveFile();
-                }else if(which==AlertDialog.BUTTON_NEGATIVE){
+                }else if(which==DialogInterface.BUTTON_NEGATIVE){
                     finish();
                 }
             }
@@ -443,7 +450,8 @@ public class ZipEditor extends ListActivity {
     private void saveFile(){
 
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 String out=zipFile.getName();
                 int i=out.lastIndexOf(".");
                 if(i != -1){
@@ -534,7 +542,8 @@ public class ZipEditor extends ListActivity {
                         case R.id.add_entry:
                             final String name=data.getStringExtra(FileBrowser.ENTRYPATH);
                             new Thread(new Runnable(){
-                                public void run(){
+                                @Override
+								public void run(){
                                     mHandler.sendEmptyMessage(LOADING);
                                     File file=new File(name);
                                     byte[] b=null;
@@ -588,10 +597,12 @@ public class ZipEditor extends ListActivity {
             switch(id){
                 case R.string.zip_editor_remove:
                     FileBrowser.prompt(this,getString(R.string.is_remove),name,new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog,int which){
-                            if(which==AlertDialog.BUTTON_POSITIVE){
+                        @Override
+						public void onClick(DialogInterface dialog,int which){
+                            if(which==DialogInterface.BUTTON_POSITIVE){
                                 new Thread(new Runnable(){
-                                    public void run(){
+                                    @Override
+									public void run(){
                                         mHandler.sendEmptyMessage(REMOVE);
                                         if(tree.isDirectory(name)){
                                             removeDirectory(name);
@@ -609,7 +620,8 @@ public class ZipEditor extends ListActivity {
                     break;
                 case R.string.extract:
                     new Thread(new Runnable(){
-                        public void run(){
+                        @Override
+						public void run(){
                             mHandler.sendEmptyMessage(EXTRACT);
                             try{
                                 extract(name);
@@ -664,7 +676,7 @@ public class ZipEditor extends ListActivity {
         zipEnties.remove(tree.getCurPath()+name);
     }
     private void removeDirectory(String name){
-        Map<String,byte[]> zipEnties=this.zipEnties;
+        Map<String,byte[]> zipEnties=ZipEditor.zipEnties;
         Tree tree=this.tree;
         String curr=tree.getCurPath();
         Set<String> keySet=zipEnties.keySet();
@@ -711,7 +723,7 @@ public class ZipEditor extends ListActivity {
             str=str.substring(s,e);
 
         File outPath=new File(EXTRACTPATH+str);
-        Map<String,byte[]> zipEnties=this.zipEnties;
+        Map<String,byte[]> zipEnties=ZipEditor.zipEnties;
         String curr=tree.getCurPath();
         curr=tree.isDirectory(name)?curr+name+"/":curr+name;
         List<String> extractFiles=new ArrayList<String>();
@@ -793,21 +805,25 @@ public class ZipEditor extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return fileList.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return fileList.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
 
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             String file=fileList.get(position);
 
             RelativeLayout container;
@@ -868,7 +884,8 @@ public class ZipEditor extends ListActivity {
     private static class Tree{
         private List<Map<String,String>> node;
         private Comparator<String> sortByType=new Comparator<String>(){
-            public int compare(String a,String b){
+            @Override
+			public int compare(String a,String b){
                 if(isDirectory(a) && !isDirectory(b)){
                     return -1;
                 }

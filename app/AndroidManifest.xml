@@ -6,8 +6,8 @@
 	android:installLocation="auto">
 
     <uses-sdk 
-		android:minSdkVersion="11" 
-		android:targetSdkVersion="11" />
+		android:minSdkVersion="14" 
+		android:targetSdkVersion="19" />
 
 	<uses-permission 
 		android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
@@ -27,10 +27,7 @@
 		android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission 
 		android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission 
-		android:name="android.permission.INSTALL_PACKAGES" />
-    <uses-permission 
-		android:name="android.permission.DELETE_PACKAGES" />
+  
     <uses-permission 
 		android:name="android.permission.WAKE_LOCK" />
     <uses-permission 
@@ -216,8 +213,6 @@
 			android:name="com.umeng.update.UpdateDialogActivity"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar" >
 		</activity>
-		<meta-data android:value="544aa737fd98c51f85034edf" android:name="UMENG_APPKEY"/>
-		<meta-data android:value="Channel ID" android:name="UMENG_CHANNEL"/>
 
 
 
@@ -229,110 +224,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-
-
-       
-		
-		
-		<activity
-            android:name="mao.bytecode.FileBrowser"
-            android:configChanges="orientation|keyboardHidden"
-			android:theme="@android:style/Theme.Holo"
-            android:label="@string/apk_editor" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="mao.bytecode.ZipEditor"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/zip_editor" />
-        <activity
-            android:name="mao.bytecode.TextEditor"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/text_editor" />
-        <activity
-            android:name="mao.bytecode.ClassListActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/class_editor" />
-        <activity
-            android:name="mao.bytecode.ClassItemActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/class_item" />
-        <activity
-            android:name="mao.bytecode.SearchClassesActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/search_class" />
-        <activity
-            android:name="mao.bytecode.SearchMethodsActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/search_method" />
-        <activity
-            android:name="mao.bytecode.FieldListActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/field_list" />
-        <activity
-            android:name="mao.bytecode.FieldItemEditorActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/field_item_editor" />
-        <activity
-            android:name="mao.bytecode.FieldItemNewActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/field_item_new" />
-        <activity
-            android:name="mao.bytecode.MethodListActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/method_list" />
-        <activity
-            android:name="mao.bytecode.CodeEditorActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/code_editor" />
-        <activity
-            android:name="mao.bytecode.MethodItemEditorActivity"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/method_item_editor" />
-        <activity
-            android:name="mao.bytecode.MethodItemNewActivity"
-            android:configChanges="orientation|keyboardHidden"
-			android:theme="@android:style/Theme.Holo"
-            android:label="@string/method_item_new" />
-        <activity
-            android:name="mao.bytecode.ClassInfoEditorActivity"
-            android:configChanges="orientation|keyboardHidden"
-			android:theme="@android:style/Theme.Holo"
-            android:label="@string/class_info_editor" />
-        <activity
-            android:name="mao.bytecode.TextPreferences"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/text_preferences" />
-        <activity
-            android:name="mao.layoutviewer.LayoutViewer"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/layout_viewer" />
-        <activity
-            android:name="mao.bytecode.ImageViewer"
-			android:theme="@android:style/Theme.Holo"
-            android:configChanges="orientation|keyboardHidden" />
-        <activity
-            android:name="mao.bytecode.opcodes.OpcodeInfoActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/opcode_info" />
-
+        
     </application>
 </manifest>

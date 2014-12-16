@@ -20,26 +20,30 @@ public final class LEDataInputStream
     work = new byte[8];
   }
 
-  public final boolean readBoolean()
+  @Override
+public final boolean readBoolean()
     throws IOException
   {
     return dis.readBoolean();
   }
 
-  public final byte readByte()
+  @Override
+public final byte readByte()
     throws IOException
   {
     return dis.readByte();
   }
 
-  public final char readChar()
+  @Override
+public final char readChar()
     throws IOException
   {
     dis.readFully(work, 0, 2);
     return (char)((work[1] & 0xFF) << 8 | work[0] & 0xFF);
   }
 
-  public final double readDouble()
+  @Override
+public final double readDouble()
     throws IOException
   {
     return Double.longBitsToDouble(readLong());
@@ -65,25 +69,29 @@ public final class LEDataInputStream
 
 
 
-  public final float readFloat()
+  @Override
+public final float readFloat()
     throws IOException
   {
     return Float.intBitsToFloat(readInt());
   }
 
-  public final void readFully(byte[] ba)
+  @Override
+public final void readFully(byte[] ba)
     throws IOException
   {
     dis.readFully(ba, 0, ba.length);
   }
 
-  public final void readFully(byte[] ba, int off, int len)
+  @Override
+public final void readFully(byte[] ba, int off, int len)
     throws IOException
   {
     dis.readFully(ba, off, len);
   }
 
-  public final int readInt()
+  @Override
+public final int readInt()
     throws IOException
   {
     dis.readFully(work, 0, 4);
@@ -91,46 +99,54 @@ public final class LEDataInputStream
   }
 
   /** @deprecated */
-  public final String readLine()
+  @Deprecated
+@Override
+public final String readLine()
     throws IOException
   {
     return dis.readLine();
   }
 
-  public final long readLong()
+  @Override
+public final long readLong()
     throws IOException
   {
     dis.readFully(work, 0, 8);
     return work[7] << 56 | (work[6] & 0xFF) << 48 | (work[5] & 0xFF) << 40 | (work[4] & 0xFF) << 32 | (work[3] & 0xFF) << 24 | (work[2] & 0xFF) << 16 | (work[1] & 0xFF) << 8 | work[0] & 0xFF;
   }
 
-  public final short readShort()
+  @Override
+public final short readShort()
     throws IOException
   {
     dis.readFully(work, 0, 2);
     return (short)((work[1] & 0xFF) << 8 | work[0] & 0xFF);
   }
 
-  public final String readUTF()
+  @Override
+public final String readUTF()
     throws IOException
   {
     return dis.readUTF();
   }
 
-  public final int readUnsignedByte()
+  @Override
+public final int readUnsignedByte()
     throws IOException
   {
     return dis.readUnsignedByte();
   }
 
-  public final int readUnsignedShort()
+  @Override
+public final int readUnsignedShort()
     throws IOException
   {
     dis.readFully(work, 0, 2);
     return (work[1] & 0xFF) << 8 | work[0] & 0xFF;
   }
 
-  public final int skipBytes(int n)
+  @Override
+public final int skipBytes(int n)
     throws IOException
   {
     return dis.skipBytes(n);

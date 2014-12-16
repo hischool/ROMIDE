@@ -208,7 +208,7 @@ public class ZioEntry implements Cloneable {
             readLocalHeader();
         }
         
-        localHeaderOffset = (int)output.getFilePointer();
+        localHeaderOffset = output.getFilePointer();
 
         
         
@@ -463,12 +463,12 @@ public class ZioEntry implements Cloneable {
      * Returns timetamp in Java format
      */
     public long getTime() {
-        int year = (int)(((modificationDate >> 9) & 0x007f) + 80);
-        int month = (int)(((modificationDate >> 5) & 0x000f) - 1);
-        int day = (int)(modificationDate & 0x001f);
-        int hour = (int)((modificationTime >> 11) & 0x001f);
-        int minute = (int)((modificationTime >> 5) & 0x003f);
-        int seconds = (int)((modificationTime << 1) & 0x003e);
+        int year = ((modificationDate >> 9) & 0x007f) + 80;
+        int month = ((modificationDate >> 5) & 0x000f) - 1;
+        int day = modificationDate & 0x001f;
+        int hour = (modificationTime >> 11) & 0x001f;
+        int minute = (modificationTime >> 5) & 0x003f;
+        int seconds = (modificationTime << 1) & 0x003e;
         Date d = new Date( year, month, day, hour, minute, seconds);
         return d.getTime();
     }

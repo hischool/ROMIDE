@@ -1,8 +1,6 @@
 package com.romide.main.ide;
 
 import android.app.*;
-import android.content.*;
-import android.net.*;
 import android.os.*;
 import android.util.*;
 import com.romide.main.ide.utils.*;
@@ -61,7 +59,7 @@ public class IDEUpdateTask extends AsyncTask<String,MaterialDialog,Double>
 	}
 
 	public void setActivity(Activity ac){
-		this.act = ac;
+		IDEUpdateTask.act = ac;
 	}
 	
 	
@@ -69,6 +67,7 @@ public class IDEUpdateTask extends AsyncTask<String,MaterialDialog,Double>
 		try
 		{
 			new Thread(){
+				@Override
 				public void run(){
 					try
 					{
@@ -102,7 +101,7 @@ public class IDEUpdateTask extends AsyncTask<String,MaterialDialog,Double>
 	{
 		// TODO: Implement this method
 		try{
-			this.save = s[0];
+			IDEUpdateTask.save = s[0];
 			String file = IDEGui.sdcard + "romide.update";
 			File f = new File(file);
 			//下载文件
@@ -115,9 +114,9 @@ public class IDEUpdateTask extends AsyncTask<String,MaterialDialog,Double>
 			prop.load(is);
 			is.close();
 			//获取信息
-			this.info = prop.getProperty("info","未知");
-			this.newInUrl = prop.getProperty("url","未知");
-			this.version = Integer.parseInt(prop.getProperty("version","0"));
+			IDEUpdateTask.info = prop.getProperty("info","未知");
+			IDEUpdateTask.newInUrl = prop.getProperty("url","未知");
+			IDEUpdateTask.version = Integer.parseInt(prop.getProperty("version","0"));
 			
 			//判断版本号
 			if(nowCode < version){

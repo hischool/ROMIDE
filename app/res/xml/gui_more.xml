@@ -19,12 +19,6 @@
 		
 		<Preference
 			android:padding="10dp"
-			android:title="Apk 编辑器"
-			android:summary="编辑 apk"
-			android:key="apk_editor"/>
-		
-		<Preference
-			android:padding="10dp"
 			android:title="文件管理器"
 			android:summary="管理设备的文件"
 			android:key="file_man"/>

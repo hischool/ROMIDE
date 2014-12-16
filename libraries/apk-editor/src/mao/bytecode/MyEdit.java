@@ -142,74 +142,86 @@ public class MyEdit extends EditText{
 				return false;
 			}
 
-			@Override
 			public boolean requestCursorUpdates(int p1)
 			{
 				// TODO: Implement this method
 				return false;
 			}
 
-            public boolean beginBatchEdit() {
+            @Override
+			public boolean beginBatchEdit() {
                 Log.w(TAG, "beginBatchEdit");
                 return ic.beginBatchEdit();
             }
-            public boolean clearMetaKeyStates(int arg0) {
+            @Override
+			public boolean clearMetaKeyStates(int arg0) {
                 Log.w(TAG, "clearMetaKeyStates " + arg0);
                 return ic.clearMetaKeyStates(arg0);
             }
 
-            public boolean commitCompletion(CompletionInfo arg0) {
+            @Override
+			public boolean commitCompletion(CompletionInfo arg0) {
                 Log.w(TAG, "commitCompletion " + arg0);
                 return ic.commitCompletion(arg0);
             }
 
-            public boolean endBatchEdit() {
+            @Override
+			public boolean endBatchEdit() {
                 Log.w(TAG, "endBatchEdit");
                 return ic.endBatchEdit();
             }
 
-            public boolean finishComposingText() {
+            @Override
+			public boolean finishComposingText() {
                 Log.w(TAG, "finishComposingText");
                 return ic.finishComposingText();
             }
 
-            public int getCursorCapsMode(int arg0) {
+            @Override
+			public int getCursorCapsMode(int arg0) {
                 Log.w(TAG, "getCursorCapsMode(" + arg0 + ")");
                 return ic.getCursorCapsMode(arg0);
             }
 
-            public ExtractedText getExtractedText(ExtractedTextRequest arg0,
+            @Override
+			public ExtractedText getExtractedText(ExtractedTextRequest arg0,
                     int arg1) {
                 Log.w(TAG, "getExtractedText" + arg0 + "," + arg1);
                 return ic.getExtractedText(arg0,arg1);
             }
 
-            public CharSequence getTextAfterCursor(int n, int flags) {
+            @Override
+			public CharSequence getTextAfterCursor(int n, int flags) {
                 Log.w(TAG, "getTextAfterCursor(" + n + "," + flags + ")");
                 return ic.getTextAfterCursor(n,flags);
             }
 
-            public CharSequence getTextBeforeCursor(int n, int flags) {
+            @Override
+			public CharSequence getTextBeforeCursor(int n, int flags) {
                 Log.w(TAG, "getTextBeforeCursor(" + n + "," + flags + ")");
                 return ic.getTextBeforeCursor(n,flags);
             }
 
-            public boolean performContextMenuAction(int arg0) {
+            @Override
+			public boolean performContextMenuAction(int arg0) {
                 Log.w(TAG, "performContextMenuAction" + arg0);
                 return ic.performContextMenuAction(arg0);
             }
 
-            public boolean performPrivateCommand(String arg0, Bundle arg1) {
+            @Override
+			public boolean performPrivateCommand(String arg0, Bundle arg1) {
                 Log.w(TAG, "performPrivateCommand" + arg0 + "," + arg1);
                 return ic.performPrivateCommand(arg0,arg1);
             }
 
-            public boolean reportFullscreenMode(boolean arg0) {
+            @Override
+			public boolean reportFullscreenMode(boolean arg0) {
                 Log.w(TAG, "reportFullscreenMode" + arg0);
                 return ic.reportFullscreenMode(arg0);
             }
 
-            public boolean commitText(CharSequence text, int newCursorPosition) {
+            @Override
+			public boolean commitText(CharSequence text, int newCursorPosition) {
                 Log.w(TAG, "commitText(\"" + text + "\", " + newCursorPosition + ")");
                 CharSequence charSeq=getText();
                 int start=getSelectionStart();
@@ -225,28 +237,33 @@ public class MyEdit extends EditText{
                 return ic.commitText(text,newCursorPosition);
             }
 
-            public boolean deleteSurroundingText(int leftLength, int rightLength) {
+            @Override
+			public boolean deleteSurroundingText(int leftLength, int rightLength) {
                 Log.w(TAG, "deleteSurroundingText(" + leftLength +
                         "," + rightLength + ")");
                 return ic.deleteSurroundingText(leftLength,rightLength);
             }
 
-            public boolean performEditorAction(int actionCode) {
+            @Override
+			public boolean performEditorAction(int actionCode) {
                 Log.w(TAG, "performEditorAction(" + actionCode + ")");
                 return ic.performEditorAction(actionCode);
             }
 
-            public boolean sendKeyEvent(KeyEvent event) {
+            @Override
+			public boolean sendKeyEvent(KeyEvent event) {
                 Log.w(TAG, "sendKeyEvent(" + event + ")");
                 return ic.sendKeyEvent(event);
             }
 
-            public boolean setComposingText(CharSequence text, int newCursorPosition) {
+            @Override
+			public boolean setComposingText(CharSequence text, int newCursorPosition) {
                 Log.w(TAG, "setComposingText(\"" + text + "\", " + newCursorPosition + ")");
                 return ic.setComposingText(text,newCursorPosition);
             }
 
-            public boolean setSelection(int start, int end) {
+            @Override
+			public boolean setSelection(int start, int end) {
                 Log.w(TAG, "setSelection" + start + "," + end);
                 return ic.setSelection(start,end);
             }

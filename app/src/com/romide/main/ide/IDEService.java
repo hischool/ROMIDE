@@ -2,9 +2,7 @@ package com.romide.main.ide;
 
 import android.app.*;
 import android.content.*;
-import android.graphics.*;
 import android.os.*;
-import android.support.v4.app.*;
 import com.romide.main.*;
 
 public class IDEService extends Service
@@ -36,8 +34,8 @@ public class IDEService extends Service
 		
 		
 		Notification mNotification = new Notification(R.drawable.ic_ide,"欢迎使用 ROM IDE",System.currentTimeMillis());
-		mNotification.flags = mNotification.FLAG_ONGOING_EVENT;
-		mNotification.flags = mNotification.FLAG_NO_CLEAR;
+		mNotification.flags = Notification.FLAG_ONGOING_EVENT;
+		mNotification.flags = Notification.FLAG_NO_CLEAR;
 		
     	
     	mNotification.setLatestEventInfo(this, "ROM-IDE","点击打开", mPI);

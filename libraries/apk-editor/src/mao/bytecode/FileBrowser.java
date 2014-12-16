@@ -124,7 +124,8 @@ public class FileBrowser extends ListActivity {
     };
 
     private Comparator<File> sortByType=new Comparator<File>(){
-        public int compare(File file1,File file2){
+        @Override
+		public int compare(File file1,File file2){
             boolean a=file1.isDirectory();
             boolean b=file2.isDirectory();
             if(a && !b){
@@ -180,18 +181,25 @@ public class FileBrowser extends ListActivity {
             updateAndFilterFileList(mQuery);
             setListAdapter(mAdapter);
             if(mPermissionDialog ==null){
-                mPermissionDialog = new Dialog(this);
-                mPermissionDialog.setContentView(R.layout.permissions);
-                mPermissionDialog.findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        setPermissions();
-                    }
-                });
-                mPermissionDialog.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        mPermissionDialog.hide();
-                    }
-                });
+            	try{
+            		mPermissionDialog = new Dialog(this);
+                    mPermissionDialog.setContentView(R.layout.permissions);
+                    mPermissionDialog.findViewById(R.id.btnOk).setOnClickListener(new View.OnClickListener() {
+                        @Override
+    					public void onClick(View v) {
+                            setPermissions();
+                        }
+                    });
+                    mPermissionDialog.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
+                        @Override
+    					public void onClick(View v) {
+                            mPermissionDialog.hide();
+                        }
+                    });
+            	}catch(Exception e ){
+            		
+            	}
+                
             }
             setSelection(position);
 
@@ -283,7 +291,8 @@ public class FileBrowser extends ListActivity {
 
     private void editArsc(final File file){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 try{
                     TextEditor.data=FileUtil.readFile(file);
@@ -302,7 +311,8 @@ public class FileBrowser extends ListActivity {
     }
     private void editText(final File file){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 try{
                     TextEditor.data=FileUtil.readFile(file);
@@ -322,7 +332,8 @@ public class FileBrowser extends ListActivity {
     
     private void editAxml(final File file){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 try{
                     TextEditor.data=FileUtil.readFile(file);
@@ -342,7 +353,8 @@ public class FileBrowser extends ListActivity {
 
     private void openDexFile(final File file){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 try{
                     mHandler.sendEmptyMessage(SHOWPROGRESS);
                     ClassListActivity.dexFile=new DexFile(file);
@@ -361,7 +373,8 @@ public class FileBrowser extends ListActivity {
 
     private void openImageFile(final File file) {
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 
                 try {
@@ -407,7 +420,8 @@ public class FileBrowser extends ListActivity {
 
     private  void renameAndWrite(){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 FileOutputStream out=null;
                 try{
@@ -642,7 +656,8 @@ public class FileBrowser extends ListActivity {
 
     private void signedFile(final File file){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 mHandler.sendEmptyMessage(SHOWPROGRESS);
                 try{
                     String out=file.getAbsolutePath();
@@ -680,14 +695,16 @@ public class FileBrowser extends ListActivity {
         alert.setTitle(R.string.extract_path);
         alert.setView(srcName);
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 String src = srcName.getText().toString();
                 if (src.length() == 0) {
                     toast(getString(R.string.extract_path_empty));
                     return;
                 }
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(SHOWPROGRESS);
                         try{
                             ZipExtract.unzipAll(new ZipFile(file),new File(srcName.getText().toString()));
@@ -708,7 +725,8 @@ public class FileBrowser extends ListActivity {
         builder.setTitle(mCurrent.getName());
         builder.setItems(R.array.dialog_menu, new DialogInterface.OnClickListener() {
 
-            public void onClick(DialogInterface dialog, int which) {
+            @Override
+			public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case 0:
                         viewCurrent();
@@ -845,8 +863,9 @@ public class FileBrowser extends ListActivity {
         if (message != "") {
             prompt(this,getString(R.string.over_write),message, new DialogInterface.OnClickListener() {
 
-                public void onClick(DialogInterface dialog, int which) {
-                    if (which == AlertDialog.BUTTON_POSITIVE) {
+                @Override
+				public void onClick(DialogInterface dialog, int which) {
+                    if (which == DialogInterface.BUTTON_POSITIVE) {
                         performPasteFile(mClipboard, destination);
                     }
                 }
@@ -862,7 +881,8 @@ public class FileBrowser extends ListActivity {
             showMessage(this,getString(R.string.copy_exception),getString(R.string.copy_exist));
         } else {
             new Thread(new Runnable(){
-                public void run(){
+                @Override
+				public void run(){
                     mHandler.sendEmptyMessage(SHOWPROGRESS);
                     try{
                         copyFile(source, destination);
@@ -997,9 +1017,11 @@ public class FileBrowser extends ListActivity {
         alert.setTitle(R.string.delete);
         alert.setMessage( String.format(getString(R.string.is_delete),file.getName()) );
         alert.setPositiveButton(R.string.btn_yes, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(SHOWPROGRESS);
                         FileUtils.delete(file);
                         mFileList.remove(file);
@@ -1024,7 +1046,8 @@ public class FileBrowser extends ListActivity {
         alert.setTitle(R.string.add_folder);
         alert.setView(folderName);
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 String name = folderName.getText().toString();
                 if (name.length() == 0) {
                     toast(getString(R.string.directory_empty));
@@ -1058,7 +1081,8 @@ public class FileBrowser extends ListActivity {
         alert.setTitle(R.string.rename);
         alert.setView(newName);
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 String name = newName.getText().toString();
                 if (name.length() == 0) {
                     toast(getString(R.string.name_empty));
@@ -1203,15 +1227,18 @@ public class FileBrowser extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return getFileList().size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return getFileList().get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
@@ -1254,7 +1281,8 @@ public class FileBrowser extends ListActivity {
             return result;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             final File file = getFileList().get(position);
             String name=file.getName().toLowerCase();
 
@@ -1278,7 +1306,8 @@ public class FileBrowser extends ListActivity {
                 icon.setImageDrawable(drawable);
                 */
                 Drawable drawable=asyn.loadDrawable(file.getAbsolutePath(),icon,new ImageCallback(){
-                    public void imageLoaded(Drawable drawable,ImageView imageView){
+                    @Override
+					public void imageLoaded(Drawable drawable,ImageView imageView){
                         icon.setImageDrawable(drawable);
                     }
                 });
@@ -1370,14 +1399,16 @@ public class FileBrowser extends ListActivity {
             }
 
             final Handler handler=new Handler() {
-                public void handleMessage(Message message) {
+                @Override
+				public void handleMessage(Message message) {
                     imageCallback.imageLoaded((Drawable) message.obj, imageView);
                 }
             };
 
 
             new Thread() {
-                public void run() {
+                @Override
+				public void run() {
                     Drawable drawable=showApkIcon(imageUrl);
                     imageCache.put(imageUrl,new SoftReference<Drawable>(drawable));
                     Message message=handler.obtainMessage(0, drawable);

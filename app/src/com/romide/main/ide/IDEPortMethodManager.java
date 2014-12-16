@@ -12,8 +12,6 @@ import android.view.*;
 import android.view.View.*;
 import android.widget.*;
 import com.ipaulpro.afilechooser.utils.*;
-import com.romide.main.*;
-import com.romide.main.ide.*;
 import com.romide.main.ide.utils.*;
 //import de.keyboardsurfer.android.widget.crouton.*;
 import java.io.*;
@@ -334,7 +332,7 @@ public class IDEPortMethodManager extends BaseActivity implements View.OnClickLi
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		// TODO: Implement this method
-		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == event.ACTION_DOWN)
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN)
 		{
 			ask_exit();
 		}

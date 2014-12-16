@@ -36,11 +36,14 @@ public class MethodItemNewActivity extends Activity {
         setContentView(R.layout.method_item_editor);
         TextWatcher watch=new TextWatcher(){
 
-            public void beforeTextChanged(CharSequence c,int start,int count,int after){
+            @Override
+			public void beforeTextChanged(CharSequence c,int start,int count,int after){
             }
-            public void onTextChanged(CharSequence c,int start,int count,int after){
+            @Override
+			public void onTextChanged(CharSequence c,int start,int count,int after){
             }
-            public void afterTextChanged(Editable edit){
+            @Override
+			public void afterTextChanged(Editable edit){
                 if(!isChanged){
                     isChanged=true;
                 }
@@ -80,13 +83,14 @@ public class MethodItemNewActivity extends Activity {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 if(isChanged){
                     FileBrowser.prompt(this,getString(R.string.prompt),getString(R.string.is_save),new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dailog,int which){
-                            if(which==AlertDialog.BUTTON_POSITIVE){
+                        @Override
+						public void onClick(DialogInterface dailog,int which){
+                            if(which==DialogInterface.BUTTON_POSITIVE){
                                 if(save(ClassListActivity.dexFile)){
                                     setResult(R.string.add_method,getIntent());
                                     finish();
                                 }
-                            }else if(which==AlertDialog.BUTTON_NEGATIVE){
+                            }else if(which==DialogInterface.BUTTON_NEGATIVE){
                                 ClassListActivity.isChanged=false;
                                 finish();
                             }

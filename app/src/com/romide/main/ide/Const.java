@@ -1,6 +1,5 @@
 package com.romide.main.ide;
 
-import com.romide.main.ide.utils.*;
 import android.app.*;
 
 public final class Const extends Activity

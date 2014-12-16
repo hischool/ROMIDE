@@ -48,7 +48,7 @@ public class ColorPreference extends DialogPreference
         super.onBindView(view);
         
         // Set our custom views inside the layout
-        final View myView = (View) view.findViewById(R.id.currentcolor);
+        final View myView = view.findViewById(R.id.currentcolor);
         if (myView != null) {
             myView.setBackgroundColor(color);
         }
@@ -59,6 +59,7 @@ public class ColorPreference extends DialogPreference
 	    // Data has changed, notify so UI can be refreshed!
 		builder.setTitle(R.string.choose_color);
 		builder.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
+			@Override
 			public void onClick(DialogInterface dialog, int whichButton) {
 				// save the color
 				Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();						
@@ -69,6 +70,7 @@ public class ColorPreference extends DialogPreference
 			}
 		});
 		builder.setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
+			@Override
 			public void onClick(DialogInterface dialog, int whichButton) {
 				// set it back to original
 				SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -86,6 +88,7 @@ public class ColorPreference extends DialogPreference
 		
 		// setup the click listener
 		colormap.setOnTouchListener(new OnTouchListener() {
+			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				BitmapDrawable bd = (BitmapDrawable) colormap.getDrawable();
 				Bitmap bitmap = bd.getBitmap();
@@ -96,12 +99,12 @@ public class ColorPreference extends DialogPreference
 				int y = (int) ((event.getY()-15) * bitmap.getHeight() / (colormap.getHeight()-30));
 
 				if (x >= bitmap.getWidth())
-					x = (int) bitmap.getWidth() - 1;
+					x = bitmap.getWidth() - 1;
 				if (x < 0)
 					x = 0;
 
 				if (y >= bitmap.getHeight())
-					y = (int) bitmap.getHeight() - 1;
+					y = bitmap.getHeight() - 1;
                 if (y < 0)
                 	y = 0;
 				

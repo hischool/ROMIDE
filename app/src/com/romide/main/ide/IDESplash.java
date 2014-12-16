@@ -15,6 +15,7 @@ public class IDESplash extends Activity
 	private int ms = 0;
 	boolean isFirst = false;
 	
+	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
@@ -32,7 +33,8 @@ public class IDESplash extends Activity
 		
 		//延迟1秒执行跳转
 		new Handler().postDelayed(new Runnable() { 
-        	public void run() {
+        	@Override
+			public void run() {
 				//是第一次跳转到 ViewPager
 				if(isFirst){
 					sp.edit().putBoolean("first",false).commit();

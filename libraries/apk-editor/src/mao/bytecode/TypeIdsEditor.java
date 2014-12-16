@@ -13,7 +13,8 @@ import org.jf.dexlib.Util.*;
 public class TypeIdsEditor implements Edit{
     private ArrayList<TypeIdItem> typeIds;
 
-    public void read(List<String> data,byte[] input)throws IOException{
+    @Override
+	public void read(List<String> data,byte[] input)throws IOException{
         List<TypeIdItem> typeIds=ClassListActivity.dexFile.TypeIdsSection.getItems();
         for(TypeIdItem typeId: typeIds){
             data.add(typeId.getTypeDescriptor());
@@ -21,7 +22,8 @@ public class TypeIdsEditor implements Edit{
         this.typeIds=(ArrayList)typeIds;
     }
 
-    public void write(String data,OutputStream out)throws IOException{
+    @Override
+	public void write(String data,OutputStream out)throws IOException{
         ArrayList<TypeIdItem> typeIds=this.typeIds;
         String[] strings=data.split("\n");
         if(strings.length!=typeIds.size())

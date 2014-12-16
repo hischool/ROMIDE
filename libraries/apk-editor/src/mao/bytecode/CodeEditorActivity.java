@@ -53,11 +53,14 @@ public class CodeEditorActivity extends Activity {
             setContentView(R.layout.code_editor);
 
             TextWatcher watch=new TextWatcher(){
-                public void beforeTextChanged(CharSequence c,int start,int count,int after){
+                @Override
+				public void beforeTextChanged(CharSequence c,int start,int count,int after){
                 }
-                public void onTextChanged(CharSequence c,int start,int count,int after){
+                @Override
+				public void onTextChanged(CharSequence c,int start,int count,int after){
                 }
-                public void afterTextChanged(Editable edit){
+                @Override
+				public void afterTextChanged(Editable edit){
                     if(!isChanged){
                         isChanged=true;
                     }
@@ -158,12 +161,13 @@ public class CodeEditorActivity extends Activity {
 
     private void showDialogIfChanged(){
         FileBrowser.prompt(this,getString(R.string.prompt),getString(R.string.is_save),new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dailog,int which){
-                if(which==AlertDialog.BUTTON_POSITIVE){
+            @Override
+			public void onClick(DialogInterface dailog,int which){
+                if(which==DialogInterface.BUTTON_POSITIVE){
                     if(saveCode()){
                         resultToMethodList();
                     }
-                }else if(which==AlertDialog.BUTTON_NEGATIVE){
+                }else if(which==DialogInterface.BUTTON_NEGATIVE){
                     resultToMethodList();
                 }
             }
@@ -247,7 +251,8 @@ public class CodeEditorActivity extends Activity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 searchString = srcName.getText().toString();
                 replaceString = dstName.getText().toString();
                 if (searchString.length() == 0) {

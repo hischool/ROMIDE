@@ -9,7 +9,6 @@ import android.preference.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 import com.romide.main.workspace.*;
 //import de.keyboardsurfer.android.widget.crouton.*;
@@ -240,7 +239,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	//检测apk
 	public void doInitSystem()
 	{
-		if (Utils.isTrulyApk(this)!=0)
+		if (Utils.isTrulyApk(this) != 0)
 		{
 			MaterialDialog d = new MaterialDialog(this);
 			d.setTitle(R.string.warning);
@@ -428,7 +427,7 @@ public class IDEMain extends BaseActivity implements AdapterView.OnItemClickList
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		// TODO: Implement this method
-		if (keyCode == event.KEYCODE_BACK && event.getAction() == event.ACTION_DOWN)
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN)
 		{
 			doExit();
 		}

@@ -145,7 +145,8 @@ public class ClassListActivity extends ListActivity {
 
             Button btn=(Button)findViewById(R.id.btn_string_pool);
             btn.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v){
+                @Override
+				public void onClick(View v){
                     openStringPool();
                 }
             });
@@ -207,7 +208,8 @@ public class ClassListActivity extends ListActivity {
         switch(id){
             case R.id.save_dexfile:
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(SAVEFILE);
                         saveDexFile();
                         mHandler.sendEmptyMessage(SAVEDISMISS);
@@ -239,7 +241,8 @@ public class ClassListActivity extends ListActivity {
         menu.add(Menu.NONE, R.string.remove_class, Menu.NONE, R.string.remove_class);
     }
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             switch (requestCode){
                 case R.layout.class_list_item:
                     switch(resultCode){
@@ -284,14 +287,16 @@ public class ClassListActivity extends ListActivity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 searchString = srcName.getText().toString();
                 if (searchString.length() == 0) {
                     toast(getString(R.string.search_name_empty));
                     return;
                 }
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(SEARCH);
                         List<String> classList=new ArrayList<String>();
                         searchStringInMethods(classList,searchString);
@@ -328,10 +333,12 @@ public class ClassListActivity extends ListActivity {
         fieldDescriptor.setText(searchFieldDescriptor);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
 
                 new Thread(new Runnable(){
-                    public void run(){
+                    @Override
+					public void run(){
                         mHandler.sendEmptyMessage(SEARCH);
 
 
@@ -373,7 +380,8 @@ public class ClassListActivity extends ListActivity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 searchMethodClass = methodClass.getText().toString();
                 searchMethodName = methodName.getText().toString();
                 searchMethodDescriptor = methodDescriptor.getText().toString();
@@ -501,7 +509,8 @@ public class ClassListActivity extends ListActivity {
         alert.setTitle(R.string.rename);
         alert.setView(newName);
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 String name = newName.getText().toString();
                 if (name.length() == 0
                     ||name.indexOf("/")!=-1) {
@@ -664,10 +673,12 @@ public class ClassListActivity extends ListActivity {
     private void showDialogIfChanged(){
         if(isChanged){
             FileBrowser.prompt(this,getString(R.string.prompt),getString(R.string.is_save),new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dailog,int which){
-                    if(which==AlertDialog.BUTTON_POSITIVE){
+                @Override
+				public void onClick(DialogInterface dailog,int which){
+                    if(which==DialogInterface.BUTTON_POSITIVE){
                         new Thread(new Runnable(){
-                            public void run(){
+                            @Override
+							public void run(){
                                 mHandler.sendEmptyMessage(SAVEFILE);
                                 saveDexFile();
                                 mHandler.sendEmptyMessage(SAVEDISMISS);
@@ -676,7 +687,7 @@ public class ClassListActivity extends ListActivity {
                         }).start();
 
                     }
-                    else if(which==AlertDialog.BUTTON_NEGATIVE){
+                    else if(which==DialogInterface.BUTTON_NEGATIVE){
                         finish();
                     }
                 }
@@ -711,8 +722,9 @@ public class ClassListActivity extends ListActivity {
             case R.string.remove_class:
                 final String name=classList.get(info.position);
                 FileBrowser.prompt(this,getString(R.string.is_remove),name,new DialogInterface.OnClickListener(){
-                        public void onClick(DialogInterface dialog,int which){
-                            if(which==AlertDialog.BUTTON_POSITIVE){
+                        @Override
+						public void onClick(DialogInterface dialog,int which){
+                            if(which==DialogInterface.BUTTON_POSITIVE){
                                 if(tree.isDirectory(name)){
                                     removeClassesDir(name);
                                 }else{
@@ -795,21 +807,25 @@ public class ClassListActivity extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return classList.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return classList.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
 
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             String file=classList.get(position);
 
             if(convertView==null){
@@ -833,7 +849,8 @@ public class ClassListActivity extends ListActivity {
     private static class Tree{
         private List<Map<String,String>> node;
         private Comparator<String> sortByType=new Comparator<String>(){
-            public int compare(String a,String b){
+            @Override
+			public int compare(String a,String b){
                 if(isDirectory(a) && !isDirectory(b)){
                     return -1;
                 }

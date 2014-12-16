@@ -1,17 +1,23 @@
 package com.romide.main.ide;
 
-import android.app.*;
-import android.content.*;
-import android.net.*;
-import android.os.*;
-import android.preference.*;
-import android.view.*;
-import android.view.View.*;
-import com.romide.main.*;
-import com.romide.main.ide.utils.*;
+import java.io.File;
+
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.view.MenuItem;
+
+import com.romide.main.R;
+import com.romide.main.ide.utils.ActionBarCompat;
+import com.romide.main.ide.utils.ActivityCompat;
 //import de.keyboardsurfer.android.widget.crouton.*;
-import java.io.*;
-import com.romide.plugin.widget.crouton.*;
 
 
 public class IDEMore extends PreferenceActivity implements Preference.OnPreferenceClickListener
@@ -25,9 +31,6 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 
 	private Preference mEdit;
 	private String mEditKey = "edit";
-
-	private Preference mApkEditor;
-	private String mApkEditorKey = "apk_editor";
 	
 	private Preference mPortMethodManager;
 	private String mPortMethodManagerKey = "port_method_manager";
@@ -36,25 +39,7 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 	private Preference mFileManager;
 	private String mFileManagerKey = "file_man";
 
-	
-	
-	public Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg)
-		{
-            
-        }
-    };
-
-
-	private static final Style RED = Style.ALERT;
-	private static final Style GREEN = Style.CONFIRM;
-	private static final Style BLUE = Style.INFO;
-	public void doToast(String text, Style s, OnClickListener l)
-	{
-		Crouton.makeText(IDEMore.this, text, s).setOnClickListener(l).show();
-	}
-
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle icicle)
 	{
@@ -65,6 +50,7 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 		init();
 	}
 
+	@SuppressWarnings("deprecation")
 	private void init()
 	{
 		// TODO: Implement this method
@@ -76,9 +62,6 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 		
 		mEdit = findPreference(mEditKey);
 		mEdit.setOnPreferenceClickListener(this);
-		
-		mApkEditor = findPreference(mApkEditorKey);
-		mApkEditor.setOnPreferenceClickListener(this);
 		
 		mPortMethodManager = findPreference(mPortMethodManagerKey);
 		mPortMethodManager.setOnPreferenceClickListener(this);
@@ -105,9 +88,6 @@ public class IDEMore extends PreferenceActivity implements Preference.OnPreferen
 		else if(key.equals(mEditKey)){
 			startActivity(new Intent(this,IDEEdit.class));
 			//startActivity(new Intent(this,com.myopicmobile.textwarrior.android.TextWarriorApplication.class));
-		}
-		else if(key.equalsIgnoreCase(mApkEditorKey)){
-			startActivity(new Intent(this,mao.bytecode.FileBrowser.class));
 		}
 		else if(key.equals(mPortMethodManagerKey)){
 			startActivity(new Intent(this,IDEPortMethodManager.class));

@@ -8,7 +8,6 @@ import android.view.*;
 import android.view.ContextMenu.*;
 import android.widget.*;
 import java.util.*;
-import mao.bytecode.*;
 public class ClassItemActivity extends ListActivity {
 
     private ClassItemAdapter mAdapter;
@@ -122,21 +121,25 @@ public class ClassItemActivity extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return classList.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return classList.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
 
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             String file=classList.get(position);
 
             LinearLayout container = (LinearLayout) mInflater.inflate(R.layout.list_item, null);

@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?><classpath>
-<classpathentry kind="src" path="src"/>
-<classpathentry kind="src" path="gen"/>
-<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-<classpathentry kind="output" path="bin"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/romide-api-0.1.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/android-support-v13.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/android-support-v4.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/kellinwood-logging-android-1.3.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/kellinwood-logging-lib-1.0.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/nineoldandroids-2.4.0.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/umeng-feedback-v4.3.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/umeng-update-v2.4.2.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/zipio-lib-1.6.jar"/>
-<classpathentry kind="lib" path="/storage/sdcard0/AppProjects/ROMIDE/app/libs/zipsigner-lib-1.11.jar"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="lib" path="libs/romide-api-0.1.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/kellinwood-logging-android-1.3.jar"/>
+	<classpathentry kind="lib" path="libs/kellinwood-logging-lib-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/nineoldandroids-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/zipio-lib-1.6.jar"/>
+	<classpathentry kind="lib" path="libs/zipsigner-lib-1.11.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

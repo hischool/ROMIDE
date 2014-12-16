@@ -22,7 +22,8 @@ public class SearchMethodsActivity extends ListActivity {
     private static List<Boolean> isDirectes;
     private static List<Integer> methodIndexes;
 
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(methodList ==null){
             methodList=new ArrayList<String>();
@@ -74,21 +75,25 @@ public class SearchMethodsActivity extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return methodList.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return methodList.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
 
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             LinearLayout container;
             if(convertView ==null){
             container= (LinearLayout) mInflater.inflate(R.layout.list_item, null);

@@ -1,13 +1,10 @@
 package com.romide.main.ide;
 
 import android.app.*;
-import android.content.*;
 import android.os.*;
 import android.view.*;
-import android.view.View.*;
 import android.widget.*;
 import android.widget.AdapterView.*;
-import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 import java.io.*;
 import java.util.*;

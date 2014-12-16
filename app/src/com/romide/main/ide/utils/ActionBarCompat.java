@@ -60,73 +60,90 @@ class ActionBarApi11OrLater extends ActionBarCompat {
     private ActionBar.OnNavigationListener wrapOnNavigationCallback(OnNavigationListener callback) {
         final OnNavigationListener cb = callback;
         return new ActionBar.OnNavigationListener() {
-            public boolean onNavigationItemSelected(int position, long id) {
+            @Override
+			public boolean onNavigationItemSelected(int position, long id) {
                 return cb.onNavigationItemSelected(position, id);
             }
         };
     }
 
-    public int getDisplayOptions() {
+    @Override
+	public int getDisplayOptions() {
         return bar.getDisplayOptions();
     }
 
-    public int getHeight() {
+    @Override
+	public int getHeight() {
         return bar.getHeight();
     }
 
-    public int getNavigationItemCount() {
+    @Override
+	public int getNavigationItemCount() {
         return bar.getNavigationItemCount();
     }
 
-    public int getNavigationMode() {
+    @Override
+	public int getNavigationMode() {
         return bar.getNavigationMode();
     }
 
-    public int getSelectedNavigationIndex() {
+    @Override
+	public int getSelectedNavigationIndex() {
         return bar.getSelectedNavigationIndex();
     }
 
-    public CharSequence getTitle() {
+    @Override
+	public CharSequence getTitle() {
         return bar.getTitle();
     }
 
-    public void hide() {
+    @Override
+	public void hide() {
         bar.hide();
     }
 
-    public boolean isShowing() {
+    @Override
+	public boolean isShowing() {
         return bar.isShowing();
     }
 
-    public void setDisplayOptions(int options) {
+    @Override
+	public void setDisplayOptions(int options) {
         bar.setDisplayOptions(options);
     }
 
-    public void setDisplayOptions(int options, int mask) {
+    @Override
+	public void setDisplayOptions(int options, int mask) {
         bar.setDisplayOptions(options, mask);
     }
 
-    public void setListNavigationCallbacks(SpinnerAdapter adapter, OnNavigationListener callback) {
+    @Override
+	public void setListNavigationCallbacks(SpinnerAdapter adapter, OnNavigationListener callback) {
         bar.setListNavigationCallbacks(adapter, wrapOnNavigationCallback(callback));
     }
 
-    public void setNavigationMode(int mode) {
+    @Override
+	public void setNavigationMode(int mode) {
         bar.setNavigationMode(mode);
     }
 
-    public void setSelectedNavigationItem(int position) {
+    @Override
+	public void setSelectedNavigationItem(int position) {
         bar.setSelectedNavigationItem(position);
     }
 
-    public void setTitle(int resId) {
+    @Override
+	public void setTitle(int resId) {
         bar.setTitle(resId);
     }
 
-    public void setTitle(CharSequence title) {
+    @Override
+	public void setTitle(CharSequence title) {
         bar.setTitle(title);
     }
 
-    public void show() {
+    @Override
+	public void show() {
         bar.show();
     }
 }

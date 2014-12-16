@@ -15,7 +15,8 @@ import org.jf.dexlib.Util.*;
 public class StringIdsEditor implements Edit{
     private ArrayList<StringIdItem> stringIds;
 
-    public void read(List<String> data,byte[] input)throws IOException{
+    @Override
+	public void read(List<String> data,byte[] input)throws IOException{
         HashMap<StringIdItem,StringIdItem> stringIdsMap=new HashMap<StringIdItem,StringIdItem>();
 
         List<ClassDefItem> classes=ClassListActivity.dexFile.ClassDefsSection.getItems();
@@ -63,7 +64,8 @@ public class StringIdsEditor implements Edit{
         }
     }
 
-    public void write(String data,OutputStream out)throws IOException{
+    @Override
+	public void write(String data,OutputStream out)throws IOException{
         ArrayList<StringIdItem> stringIds=this.stringIds;
         String[] strings=data.split("\n");
         if(strings.length!=stringIds.size())

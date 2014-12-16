@@ -3,14 +3,12 @@ package com.romide.main.ide;
 import android.app.*;
 import android.content.*;
 import android.content.pm.*;
-import android.widget.*;
 import com.romide.main.ide.utils.*;
 
 import java.io.*;
 import java.util.*;
 import me.drakeet.materialdialog.*;
 import com.romide.plugin.tasks.*;
-import android.content.pm.PackageManager.*;
 
 public class Utils
 {
@@ -47,6 +45,11 @@ public class Utils
 	}
 	
 	public static int isTrulyApk(Context c){
+		
+		if (IDEDebug.verify_true) {
+			return 0;
+		}
+		
 		int code = -1;
 		try
 		{
@@ -62,35 +65,6 @@ public class Utils
 	}
 	
 	public static native int isTrulyApkReal(int code);
-
-//	public static boolean isTrulyApk(Context c)
-//	{
-//		boolean is = false;
-//		final int key = -1923360755;
-//		try
-//		{
-//			PackageInfo packageInfo = c.getPackageManager().getPackageInfo(c.getPackageName(), PackageManager.GET_SIGNATURES);
-//			Signature[] signs = packageInfo.signatures;
-//			Signature sign = signs[0];
-//			int code = sign.hashCode();
-//			//EditText d = new EditText(c);
-//			//d.setText(code+"");
-//			//new AlertDialog.Builder(c).setView(d).show();
-//			if (code == key)
-//			{
-//				is = true;
-//			}
-//			else
-//			{
-//				is = false;
-//			}
-//		}
-//		catch (PackageManager.NameNotFoundException e)
-//		{
-//			is = false;
-//		} 
-//		return is;
-//	}
 
 	public static void showCommandResult(Context con, Command c, String t)
 	{

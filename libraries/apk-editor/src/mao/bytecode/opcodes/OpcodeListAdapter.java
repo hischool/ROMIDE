@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,19 +27,23 @@ public class OpcodeListAdapter extends ArrayAdapter<String> implements Filterabl
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     
-    public int getCount() {
+    @Override
+	public int getCount() {
         return objects.size();
     }
 
-    public String getItem(int position) {
+    @Override
+	public String getItem(int position) {
         return objects.get(position);
     }
 
-    public long getItemId(int position) {
+    @Override
+	public long getItemId(int position) {
         return position;
     }
     
-    public View getView(int position, View convertView, ViewGroup parent) {
+    @Override
+	public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
         ViewHolder holder;
         

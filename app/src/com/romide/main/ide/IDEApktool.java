@@ -8,7 +8,6 @@ import android.preference.*;
 import android.util.*;
 import android.view.*;
 import com.ipaulpro.afilechooser.utils.*;
-import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 import java.io.*;
 import me.drakeet.materialdialog.*;

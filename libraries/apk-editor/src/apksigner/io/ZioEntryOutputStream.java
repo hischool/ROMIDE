@@ -36,7 +36,8 @@ public class ZioEntryOutputStream extends OutputStream {
         else downstream = wrapped;
     }
     
-    public void close() throws IOException {
+    @Override
+	public void close() throws IOException {
         downstream.flush();
         downstream.close();
         crcValue = (int)crc.getValue();
@@ -46,23 +47,27 @@ public class ZioEntryOutputStream extends OutputStream {
         return crcValue;
     }
     
-    public void flush() throws IOException {
+    @Override
+	public void flush() throws IOException {
         downstream.flush();
     }
 
-    public void write(byte[] b) throws IOException {
+    @Override
+	public void write(byte[] b) throws IOException {
         downstream.write(b);
         crc.update(b);
         size += b.length;
     }
 
-    public void write(byte[] b, int off, int len) throws IOException {
+    @Override
+	public void write(byte[] b, int off, int len) throws IOException {
         downstream.write( b, off, len);
         crc.update( b, off, len);
         size += len;
     }
 
-    public void write(int b) throws IOException {
+    @Override
+	public void write(int b) throws IOException {
         downstream.write( b);
         crc.update( b);
         size += 1;

@@ -253,6 +253,7 @@ public class WKMain extends BaseActivity
 		d.show();
 		
 		new Thread(){
+			@Override
 			public void run(){
 				try
 				{

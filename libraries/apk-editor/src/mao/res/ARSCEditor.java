@@ -16,12 +16,14 @@ public class ARSCEditor implements Edit{
 
     }
 
-    public void read(final List<String> data,byte[] input)throws IOException{
+    @Override
+	public void read(final List<String> data,byte[] input)throws IOException{
         arsc=ARSCDecoder.read(new ByteArrayInputStream(input));
         arsc.mTableStrings.getStrings(data);
     }
 
-    public void write(String data,OutputStream out)throws IOException{
+    @Override
+	public void write(String data,OutputStream out)throws IOException{
         String[] strings=data.split("\n");
         List<String> list=new ArrayList<String>(strings.length);
         for(String str: strings){

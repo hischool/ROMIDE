@@ -49,7 +49,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         }
     }
 
-    public void close() {
+    @Override
+	public void close() {
         if (!m_operational) {
             return;
         }
@@ -63,7 +64,8 @@ public class AXmlResourceParser implements XmlResourceParser {
     }
 
     /////////////////////////////////// iteration
-    public int next() throws XmlPullParserException, IOException {
+    @Override
+	public int next() throws XmlPullParserException, IOException {
         if (m_reader == null) {
             throw new XmlPullParserException("Parser is not opened.", this, null);
         }
@@ -76,11 +78,13 @@ public class AXmlResourceParser implements XmlResourceParser {
         }
     }
 
-    public int nextToken() throws XmlPullParserException, IOException {
+    @Override
+	public int nextToken() throws XmlPullParserException, IOException {
         return next();
     }
 
-    public int nextTag() throws XmlPullParserException, IOException {
+    @Override
+	public int nextTag() throws XmlPullParserException, IOException {
         int eventType = next();
         if (eventType == TEXT && isWhitespace()) {
             eventType = next();
@@ -91,7 +95,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return eventType;
     }
 
-    public String nextText() throws XmlPullParserException, IOException {
+    @Override
+	public String nextText() throws XmlPullParserException, IOException {
         if (getEventType() != START_TAG) {
             throw new XmlPullParserException("Parser must be on START_TAG to read next text.", this, null);
         }
@@ -110,7 +115,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         }
     }
 
-    public void require(int type, String namespace, String name) throws XmlPullParserException, IOException {
+    @Override
+	public void require(int type, String namespace, String name) throws XmlPullParserException, IOException {
         if (type != getEventType()
                 || (namespace != null && !namespace.equals(getNamespace()))
                 || (name != null && !name.equals(getName()))) {
@@ -118,33 +124,39 @@ public class AXmlResourceParser implements XmlResourceParser {
         }
     }
 
-    public int getDepth() {
+    @Override
+	public int getDepth() {
         return m_namespaces.getDepth() - 1;
     }
 
-    public int getEventType() throws XmlPullParserException {
+    @Override
+	public int getEventType() throws XmlPullParserException {
         return m_event;
     }
 
-    public int getLineNumber() {
+    @Override
+	public int getLineNumber() {
         return m_lineNumber;
     }
 
-    public String getName() {
+    @Override
+	public String getName() {
         if (m_name == -1 || (m_event != START_TAG && m_event != END_TAG)) {
             return null;
         }
         return m_strings.getString(m_name);
     }
 
-    public String getText() {
+    @Override
+	public String getText() {
         if (m_name == -1 || m_event != TEXT) {
             return null;
         }
         return m_strings.getString(m_name);
     }
 
-    public char[] getTextCharacters(int[] holderForStartAndLength) {
+    @Override
+	public char[] getTextCharacters(int[] holderForStartAndLength) {
         String text = getText();
         if (text == null) {
             return null;
@@ -156,35 +168,42 @@ public class AXmlResourceParser implements XmlResourceParser {
         return chars;
     }
 
-    public String getNamespace() {
+    @Override
+	public String getNamespace() {
         return m_strings.getString(m_namespaceUri);
     }
 
-    public String getPrefix() {
+    @Override
+	public String getPrefix() {
         int prefix = m_namespaces.findPrefix(m_namespaceUri);
         return m_strings.getString(prefix);
     }
 
-    public String getPositionDescription() {
+    @Override
+	public String getPositionDescription() {
         return "XML line #" + getLineNumber();
     }
 
-    public int getNamespaceCount(int depth) throws XmlPullParserException {
+    @Override
+	public int getNamespaceCount(int depth) throws XmlPullParserException {
         return m_namespaces.getAccumulatedCount(depth);
     }
 
-    public String getNamespacePrefix(int pos) throws XmlPullParserException {
+    @Override
+	public String getNamespacePrefix(int pos) throws XmlPullParserException {
         int prefix = m_namespaces.getPrefix(pos);
         return m_strings.getString(prefix);
     }
 
-    public String getNamespaceUri(int pos) throws XmlPullParserException {
+    @Override
+	public String getNamespaceUri(int pos) throws XmlPullParserException {
         int uri = m_namespaces.getUri(pos);
         return m_strings.getString(uri);
     }
 
     /////////////////////////////////// attributes
-    public String getClassAttribute() {
+    @Override
+	public String getClassAttribute() {
         if (m_classAttribute == -1) {
             return null;
         }
@@ -193,7 +212,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_strings.getString(value);
     }
 
-    public String getIdAttribute() {
+    @Override
+	public String getIdAttribute() {
         if (m_idAttribute == -1) {
             return null;
         }
@@ -202,7 +222,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_strings.getString(value);
     }
 
-    public int getIdAttributeResourceValue(int defaultValue) {
+    @Override
+	public int getIdAttributeResourceValue(int defaultValue) {
         if (m_idAttribute == -1) {
             return defaultValue;
         }
@@ -214,7 +235,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_attributes[offset + ATTRIBUTE_IX_VALUE_DATA];
     }
 
-    public int getStyleAttribute() {
+    @Override
+	public int getStyleAttribute() {
         if (m_styleAttribute == -1) {
             return 0;
         }
@@ -222,14 +244,16 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_attributes[offset + ATTRIBUTE_IX_VALUE_DATA];
     }
 
-    public int getAttributeCount() {
+    @Override
+	public int getAttributeCount() {
         if (m_event != START_TAG) {
             return -1;
         }
         return m_attributes.length / ATTRIBUTE_LENGHT;
     }
 
-    public String getAttributeNamespace(int index) {
+    @Override
+	public String getAttributeNamespace(int index) {
         int offset = getAttributeOffset(index);
         int namespace = m_attributes[offset + ATTRIBUTE_IX_NAMESPACE_URI];
         if (namespace == -1) {
@@ -238,7 +262,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_strings.getString(namespace);
     }
 
-    public String getAttributePrefix(int index) {
+    @Override
+	public String getAttributePrefix(int index) {
         int offset = getAttributeOffset(index);
         int uri = m_attributes[offset + ATTRIBUTE_IX_NAMESPACE_URI];
         int prefix = m_namespaces.findPrefix(uri);
@@ -248,7 +273,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_strings.getString(prefix);
     }
 
-    public String getAttributeName(int index) {
+    @Override
+	public String getAttributeName(int index) {
         int offset = getAttributeOffset(index);
         int name = m_attributes[offset + ATTRIBUTE_IX_NAME];
         if (name == -1) {
@@ -257,7 +283,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_strings.getString(name);
     }
 
-    public int getAttributeNameResource(int index) {
+    @Override
+	public int getAttributeNameResource(int index) {
         int offset = getAttributeOffset(index);
         int name = m_attributes[offset + ATTRIBUTE_IX_NAME];
         if (m_resourceIDs == null
@@ -267,17 +294,20 @@ public class AXmlResourceParser implements XmlResourceParser {
         return m_resourceIDs[name];
     }
 
-    public int getAttributeValueType(int index) {
+    @Override
+	public int getAttributeValueType(int index) {
         int offset = getAttributeOffset(index);
         return m_attributes[offset + ATTRIBUTE_IX_VALUE_TYPE];
     }
 
-    public int getAttributeValueData(int index) {
+    @Override
+	public int getAttributeValueData(int index) {
         int offset = getAttributeOffset(index);
         return m_attributes[offset + ATTRIBUTE_IX_VALUE_DATA];
     }
 
-    public String getAttributeValue(int index) {
+    @Override
+	public String getAttributeValue(int index) {
         int offset = getAttributeOffset(index);
         int valueType = m_attributes[offset + ATTRIBUTE_IX_VALUE_TYPE];
         if (valueType == TypedValue.TYPE_STRING) {
@@ -288,11 +318,13 @@ public class AXmlResourceParser implements XmlResourceParser {
         return "";//TypedValue.coerceToString(valueType,valueData);
     }
 
-    public boolean getAttributeBooleanValue(int index, boolean defaultValue) {
+    @Override
+	public boolean getAttributeBooleanValue(int index, boolean defaultValue) {
         return getAttributeIntValue(index, defaultValue ? 1 : 0) != 0;
     }
 
-    public float getAttributeFloatValue(int index, float defaultValue) {
+    @Override
+	public float getAttributeFloatValue(int index, float defaultValue) {
         int offset = getAttributeOffset(index);
         int valueType = m_attributes[offset + ATTRIBUTE_IX_VALUE_TYPE];
         if (valueType == TypedValue.TYPE_FLOAT) {
@@ -302,7 +334,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return defaultValue;
     }
 
-    public int getAttributeIntValue(int index, int defaultValue) {
+    @Override
+	public int getAttributeIntValue(int index, int defaultValue) {
         int offset = getAttributeOffset(index);
         int valueType = m_attributes[offset + ATTRIBUTE_IX_VALUE_TYPE];
         if (valueType >= TypedValue.TYPE_FIRST_INT
@@ -312,11 +345,13 @@ public class AXmlResourceParser implements XmlResourceParser {
         return defaultValue;
     }
 
-    public int getAttributeUnsignedIntValue(int index, int defaultValue) {
+    @Override
+	public int getAttributeUnsignedIntValue(int index, int defaultValue) {
         return getAttributeIntValue(index, defaultValue);
     }
 
-    public int getAttributeResourceValue(int index, int defaultValue) {
+    @Override
+	public int getAttributeResourceValue(int index, int defaultValue) {
         int offset = getAttributeOffset(index);
         int valueType = m_attributes[offset + ATTRIBUTE_IX_VALUE_TYPE];
         if (valueType == TypedValue.TYPE_REFERENCE) {
@@ -325,7 +360,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return defaultValue;
     }
 
-    public String getAttributeValue(String namespace, String attribute) {
+    @Override
+	public String getAttributeValue(String namespace, String attribute) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return null;
@@ -333,7 +369,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeValue(index);
     }
 
-    public boolean getAttributeBooleanValue(String namespace, String attribute, boolean defaultValue) {
+    @Override
+	public boolean getAttributeBooleanValue(String namespace, String attribute, boolean defaultValue) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return defaultValue;
@@ -341,7 +378,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeBooleanValue(index, defaultValue);
     }
 
-    public float getAttributeFloatValue(String namespace, String attribute, float defaultValue) {
+    @Override
+	public float getAttributeFloatValue(String namespace, String attribute, float defaultValue) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return defaultValue;
@@ -349,7 +387,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeFloatValue(index, defaultValue);
     }
 
-    public int getAttributeIntValue(String namespace, String attribute, int defaultValue) {
+    @Override
+	public int getAttributeIntValue(String namespace, String attribute, int defaultValue) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return defaultValue;
@@ -357,7 +396,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeIntValue(index, defaultValue);
     }
 
-    public int getAttributeUnsignedIntValue(String namespace, String attribute, int defaultValue) {
+    @Override
+	public int getAttributeUnsignedIntValue(String namespace, String attribute, int defaultValue) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return defaultValue;
@@ -365,7 +405,8 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeUnsignedIntValue(index, defaultValue);
     }
 
-    public int getAttributeResourceValue(String namespace, String attribute, int defaultValue) {
+    @Override
+	public int getAttributeResourceValue(String namespace, String attribute, int defaultValue) {
         int index = findAttribute(namespace, attribute);
         if (index == -1) {
             return defaultValue;
@@ -373,70 +414,86 @@ public class AXmlResourceParser implements XmlResourceParser {
         return getAttributeResourceValue(index, defaultValue);
     }
 
-    public int getAttributeListValue(int index, String[] options, int defaultValue) {
+    @Override
+	public int getAttributeListValue(int index, String[] options, int defaultValue) {
         // TODO implement
         return 0;
     }
 
-    public int getAttributeListValue(String namespace, String attribute, String[] options, int defaultValue) {
+    @Override
+	public int getAttributeListValue(String namespace, String attribute, String[] options, int defaultValue) {
         // TODO implement
         return 0;
     }
 
-    public String getAttributeType(int index) {
+    @Override
+	public String getAttributeType(int index) {
         return "CDATA";
     }
 
-    public boolean isAttributeDefault(int index) {
+    @Override
+	public boolean isAttributeDefault(int index) {
         return false;
     }
 
     /////////////////////////////////// dummies
-    public void setInput(InputStream stream, String inputEncoding) throws XmlPullParserException {
+    @Override
+	public void setInput(InputStream stream, String inputEncoding) throws XmlPullParserException {
         throw new XmlPullParserException(E_NOT_SUPPORTED);
     }
 
-    public void setInput(Reader reader) throws XmlPullParserException {
+    @Override
+	public void setInput(Reader reader) throws XmlPullParserException {
         throw new XmlPullParserException(E_NOT_SUPPORTED);
     }
 
-    public String getInputEncoding() {
+    @Override
+	public String getInputEncoding() {
         return null;
     }
 
-    public int getColumnNumber() {
+    @Override
+	public int getColumnNumber() {
         return -1;
     }
 
-    public boolean isEmptyElementTag() throws XmlPullParserException {
+    @Override
+	public boolean isEmptyElementTag() throws XmlPullParserException {
         return false;
     }
 
-    public boolean isWhitespace() throws XmlPullParserException {
+    @Override
+	public boolean isWhitespace() throws XmlPullParserException {
         return false;
     }
 
-    public void defineEntityReplacementText(String entityName, String replacementText) throws XmlPullParserException {
+    @Override
+	public void defineEntityReplacementText(String entityName, String replacementText) throws XmlPullParserException {
         throw new XmlPullParserException(E_NOT_SUPPORTED);
     }
 
-    public String getNamespace(String prefix) {
+    @Override
+	public String getNamespace(String prefix) {
         throw new RuntimeException(E_NOT_SUPPORTED);
     }
 
-    public Object getProperty(String name) {
+    @Override
+	public Object getProperty(String name) {
         return null;
     }
 
-    public void setProperty(String name, Object value) throws XmlPullParserException {
+    @Override
+	public void setProperty(String name, Object value) throws XmlPullParserException {
         throw new XmlPullParserException(E_NOT_SUPPORTED);
     }
 
-    public boolean getFeature(String feature) {
+    @Override
+	public boolean getFeature(String feature) {
         return false;
     }
 
-    public void setFeature(String name, boolean value) throws XmlPullParserException {
+    @Override
+	public void setFeature(String name, boolean value) throws XmlPullParserException {
         throw new XmlPullParserException(E_NOT_SUPPORTED);
     }
 

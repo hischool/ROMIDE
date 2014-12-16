@@ -128,7 +128,8 @@ public class MethodListActivity extends ListActivity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 ClassListActivity.searchString = srcName.getText().toString();
                 if (ClassListActivity.searchString.length() == 0) {
                     toast(getString(R.string.search_name_empty));
@@ -161,7 +162,8 @@ public class MethodListActivity extends ListActivity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 ClassListActivity.searchMethodClass = methodClass.getText().toString();
                 ClassListActivity.searchMethodName = methodName.getText().toString();
                 ClassListActivity.searchMethodDescriptor = methodDescriptor.getText().toString();
@@ -192,7 +194,8 @@ public class MethodListActivity extends ListActivity {
         fieldDescriptor.setText(ClassListActivity.searchFieldDescriptor);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 ClassListActivity.searchFieldClass = fieldClass.getText().toString();
                 ClassListActivity.searchFieldName = fieldName.getText().toString();
                 ClassListActivity.searchFieldDescriptor = fieldDescriptor.getText().toString();
@@ -488,19 +491,23 @@ public class MethodListActivity extends ListActivity {
             mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        public int getCount() {
+        @Override
+		public int getCount() {
             return methodList.size();
         }
 
-        public Object getItem(int position) {
+        @Override
+		public Object getItem(int position) {
             return methodList.get(position);
         }
 
-        public long getItemId(int position) {
+        @Override
+		public long getItemId(int position) {
             return position;
         }
 
-        public View getView(int position, View convertView, ViewGroup parent) {
+        @Override
+		public View getView(int position, View convertView, ViewGroup parent) {
             RelativeLayout container;
             if(convertView ==null){
                 container = (RelativeLayout) mInflater.inflate(R.layout.method_list_item, null);

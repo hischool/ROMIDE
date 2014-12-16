@@ -152,7 +152,7 @@ public class AXMLPrinter {
 
     /////////////////////////////////// ILLEGAL STUFF, DONT LOOK :)
     private static float complexToFloat(int complex) {
-        return (float) (complex & 0xFFFFFF00) * RADIX_MULTS[(complex >> 4) & 3];
+        return (complex & 0xFFFFFF00) * RADIX_MULTS[(complex >> 4) & 3];
     }
     private static final float RADIX_MULTS[] = {
         0.00390625F, 3.051758E-005F, 1.192093E-007F, 4.656613E-010F

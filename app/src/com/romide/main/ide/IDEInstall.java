@@ -6,7 +6,6 @@ import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
-import com.romide.main.*;
 import com.romide.main.ide.utils.*;
 //import de.keyboardsurfer.android.widget.crouton.*;
 import java.io.*;
@@ -98,6 +97,7 @@ public class IDEInstall extends BaseActivity implements OnClickListener
 		Actionbar();
 	}
 
+	@Override
 	public void onClick(View v)
 	{
 		int id = v.getId();
@@ -138,7 +138,8 @@ public class IDEInstall extends BaseActivity implements OnClickListener
 		// TODO: Implement this method
 		ProgressDialog(0,"正在安装");
 		new Thread(){
-		    public void run()
+		    @Override
+			public void run()
 			{
 
 				try
@@ -179,7 +180,8 @@ public class IDEInstall extends BaseActivity implements OnClickListener
 		// TODO: Implement this method
 		ProgressDialog(0,"正在安装");
 		new Thread(){
-		    public void run()
+		    @Override
+			public void run()
 			{
 
 				try

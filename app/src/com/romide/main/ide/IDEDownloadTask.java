@@ -1,7 +1,5 @@
 package com.romide.main.ide;
 
-import android.app.*;
-import android.content.*;
 import android.os.*;
 import android.util.*;
 import com.romide.main.ide.utils.*;
@@ -36,8 +34,8 @@ public class IDEDownloadTask extends AsyncTask<String,MaterialDialog,Double>
 	{
 		// TODO: Implement this method
 		try{
-			this.url = s[1];
-			this.save = s[0];
+			IDEDownloadTask.url = s[1];
+			IDEDownloadTask.save = s[0];
 			File f = new File(save);
 			//下载文件
 			if(f.exists()) f.delete();

@@ -2,11 +2,8 @@ package com.romide.main.ide;
 
 import android.app.*;
 import android.content.*;
-import android.graphics.*;
 import android.net.*;
 import android.os.*;
-import android.text.*;
-import android.text.style.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
@@ -17,7 +14,6 @@ import com.romide.main.ide.utils.*;
 import com.romide.main.ide.view.*;
 //import de.keyboardsurfer.android.widget.crouton.*;
 import java.io.*;
-import java.util.regex.*;
 import org.apache.http.util.*;
 import com.romide.plugin.widget.crouton.*;
 

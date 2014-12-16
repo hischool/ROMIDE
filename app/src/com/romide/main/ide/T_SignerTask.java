@@ -1,14 +1,8 @@
 package com.romide.main.ide;
 
 import android.app.*;
-import android.content.*;
 import android.os.*;
-import android.util.*;
-import com.romide.main.ide.utils.*;
-import java.io.*;
-import java.util.*;
 import kellinwood.security.zipsigner.*;
-import java.security.*;
 import me.drakeet.materialdialog.*;
 
 public class T_SignerTask extends AsyncTask<String,ProgressDialog,Double> implements ProgressListener

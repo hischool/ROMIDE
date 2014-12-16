@@ -90,11 +90,14 @@ public class TextEditor extends Activity {
             open();
             
             TextWatcher watch=new TextWatcher(){
-                public void beforeTextChanged(CharSequence c,int start,int count,int after){
+                @Override
+				public void beforeTextChanged(CharSequence c,int start,int count,int after){
                 }
-                public void onTextChanged(CharSequence c,int start,int count,int after){
+                @Override
+				public void onTextChanged(CharSequence c,int start,int count,int after){
                 }
-                public void afterTextChanged(Editable edit){
+                @Override
+				public void afterTextChanged(Editable edit){
                     if(!isChanged){
                         isChanged=true;
                     }
@@ -108,11 +111,12 @@ public class TextEditor extends Activity {
 
     private void showDialog(){
         FileBrowser.prompt(this,getString(R.string.prompt),getString(R.string.is_save),new DialogInterface.OnClickListener(){
-            public void onClick(DialogInterface dailog,int which){
-                if(which==AlertDialog.BUTTON_POSITIVE){
+            @Override
+			public void onClick(DialogInterface dailog,int which){
+                if(which==DialogInterface.BUTTON_POSITIVE){
                     write();
                     result();
-                }else if(which==AlertDialog.BUTTON_NEGATIVE){
+                }else if(which==DialogInterface.BUTTON_NEGATIVE){
                     finish();
                 }
             }
@@ -125,7 +129,8 @@ public class TextEditor extends Activity {
 
     private void open(){
         new Thread(new Runnable(){
-            public void run(){
+            @Override
+			public void run(){
                 try{
                     List<String> list=new ArrayList<String>();
                     edit.read(list,data);
@@ -174,7 +179,8 @@ public class TextEditor extends Activity {
     }
 
 
-    public void onResume(){
+    @Override
+	public void onResume(){
         super.onResume();
         updatePrefs();
     //    Log.e("MyText","onResume");
@@ -195,7 +201,8 @@ public class TextEditor extends Activity {
         alert.setView(scroll);
 
         alert.setPositiveButton(R.string.btn_ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+            @Override
+			public void onClick(DialogInterface dialog, int whichButton) {
                 searchString = srcName.getText().toString();
                 replaceString = dstName.getText().toString();
                 if (searchString.length() == 0) {
@@ -285,7 +292,8 @@ public class TextEditor extends Activity {
         }catch(IOException io){}
     }
 
-    public boolean onCreateOptionsMenu(Menu m){
+    @Override
+	public boolean onCreateOptionsMenu(Menu m){
         MenuInflater in=getMenuInflater();
         in.inflate(R.menu.text_editor_menu,m);
         if(noText){
@@ -316,7 +324,8 @@ public class TextEditor extends Activity {
         finish();
     }
     
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if(!noText&&isChanged){
                 showDialog();
@@ -370,14 +379,16 @@ public class TextEditor extends Activity {
 
     private class Text implements Edit{
 
-        public void read(List<String> data,byte[] input)throws IOException{
+        @Override
+		public void read(List<String> data,byte[] input)throws IOException{
             String s=new String(input,"UTF-8");
             String[] strs=s.split("\n");
             for(String str: strs){
                 data.add(str);
             }
         }
-        public void write(String data,OutputStream out)throws IOException{
+        @Override
+		public void write(String data,OutputStream out)throws IOException{
             out.write(data.getBytes("UTF-8"));
         }
     }

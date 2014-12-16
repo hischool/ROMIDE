@@ -1,6 +1,5 @@
 package com.romide.main.ide;
 
-import android.app.*;
 import android.content.*;
 import android.net.*;
 import android.os.*;
