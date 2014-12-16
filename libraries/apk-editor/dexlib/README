@@ -1,2 +1,0 @@
-将编译好的class打包为dexlib.jar，然后复制到libs目录下.
-
