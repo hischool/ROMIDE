@@ -17,22 +17,22 @@ public final class R {
 		public static final int activity_vertical_margin = 0x7f070001;
 	}
 	public static final class drawable {
-		public static final int button = 0x7f020008;
-		public static final int material_card = 0x7f020036;
-		public static final int material_card_nos = 0x7f020037;
-		public static final int material_card_nos_pressed = 0x7f020038;
+		public static final int button = 0x7f020006;
+		public static final int material_card = 0x7f020031;
+		public static final int material_card_nos = 0x7f020032;
+		public static final int material_card_nos_pressed = 0x7f020033;
 	}
 	public static final class id {
-		public static final int buttonLayout = 0x7f0b0053;
-		public static final int contentView = 0x7f0b004f;
-		public static final int empty_view = 0x7f0b0054;
-		public static final int material_background = 0x7f0b004e;
-		public static final int message = 0x7f0b0052;
-		public static final int message_content_view = 0x7f0b0051;
-		public static final int title = 0x7f0b0050;
+		public static final int buttonLayout = 0x7f0b0051;
+		public static final int contentView = 0x7f0b004d;
+		public static final int empty_view = 0x7f0b0052;
+		public static final int material_background = 0x7f0b004c;
+		public static final int message = 0x7f0b0050;
+		public static final int message_content_view = 0x7f0b004f;
+		public static final int title = 0x7f0b004e;
 	}
 	public static final class layout {
-		public static final int layout_materialdialog = 0x7f030015;
+		public static final int layout_materialdialog = 0x7f030014;
 	}
 	public static final class string {
 		public static final int action_settings = 0x7f080002;

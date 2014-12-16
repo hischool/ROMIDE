@@ -1,6 +1,5 @@
 include ':app'
 include ':libraries:android-ui'
 include ':libraries:support-v4'
-include ':libraries:StandOut:library'
 include ':libraries:MaterialDialog:library'
 include ':libraries:FileManager'
